@@ -1,0 +1,229 @@
+@import "https://fonts.googleapis.com/css?family=Roboto&display=swap";
+
+:root {
+  --color-hover: rgb(152, 81, 161);
+}
+
+/* Página Inicial */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background: #8b4bbeee;
+  text-align: center;
+}
+
+body header {
+  background: #530985ee;
+  padding: 30px;
+  text-align: center;
+}
+
+body header div a {
+  color: #FFFFFF;
+  margin: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-hover);
+}
+
+body header div a:hover {
+  color: var(--color-hover);
+  transition: 400ms;
+}
+
+#conteudo {
+  color: #FFFFFF;
+  margin-top: 80px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+/* Imagens */
+
+body div {
+  text-align: center;
+}
+
+#imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+#starter {
+  padding: 35px;
+  background-color: rgb(17, 17, 17);
+  border-radius: 20px;
+  border: solid 5px rgb(70, 22, 82);
+}
+
+#starter:hover {
+  -webkit-transform: scale(1.1);
+}
+
+#launchbase {
+  padding: 35px;
+  background-color: rgb(17, 17, 17);
+  border-radius: 20px;
+  border: solid 5px rgb(202, 108, 21);
+}
+
+#launchbase:hover {
+  -webkit-transform: scale(1.1);
+}
+
+#gostack {
+  padding: 35px;
+  background-color: rgb(17, 17, 17);
+  border-radius: 20px;
+  border: solid 5px rgb(13, 109, 29);
+}
+
+#gostack:hover {
+  -webkit-transform: scale(1.1);
+}
+
+/* Informações dos cursos */
+
+.dados1 {
+  color: rgb(231, 231, 231);
+  margin-top: 40px;
+  font-family: 'Roboto';
+  font-size: 25px;
+}
+
+.dados2 {
+  color: rgb(207, 207, 207);
+  margin-top: 10px;
+  font-family: 'Roboto';
+  font-size: 16px;
+}
+
+/* Página Sobre */
+
+.editlinks {
+  color: #FFFFFF;
+  margin: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(173, 0, 173);
+}
+
+.editlinks:hover {
+  color: rgb(173, 0, 173);
+  transition: 300ms;
+}
+
+
+#wrapper {
+  text-align: center;
+  padding: 30px;
+  font-family: "Roboto";
+  color: #FFFFFF;
+}
+
+#wrapper img {
+  border-radius: 50%;
+  border: 5px solid #4a006d;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#wrapper h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+#wrapper h2 {
+  font-size: 20px;
+  opacity: 0.8;
+  width: 650px;
+  margin: 0 auto;
+}
+
+#wrapper ul {
+  max-width: 100px;
+  font-size: 15px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.links {
+  text-align: center;
+  font-family: "Roboto";
+}
+
+/* Modal */
+
+.modal {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mod {
+  background-color: white;
+  width: 90%;
+  height: 90%;
+  margin: 5vh auto;
+  position: relative;
+}
+
+.material-icons {
+  color: black;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+#maximize {
+  color: black;
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+}
+
+.mod.full {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#minimize {
+  color: black;
+  position: absolute;
+  right: 60px;
+  cursor: pointer;
+}
+
+/* Modal Active */
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+iframe {
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  left: 0;
+  top: 20px;
+}
