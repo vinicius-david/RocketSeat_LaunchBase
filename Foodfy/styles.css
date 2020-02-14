@@ -1,0 +1,166 @@
+@import "https://fonts.googleapis.com/css?family=Lemonada&display=swap";
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* FOODFY */
+
+header {
+  padding: 30px;
+  margin-left: 350px;
+  display: flex;
+  flex-direction: row;
+}
+
+#headerfoodfy {
+  margin-right: 70px;
+  margin-top: 2px;
+}
+
+#headerlinks {
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  font-family: "Lemonada";
+  font-size: 12px;
+}
+
+#headerlinksobre {
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  font-family: "Lemonada";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#headerlinkreceitas {
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  font-family: "Lemonada";
+  font-size: 12px;
+}
+
+#headerlinksobre2 {
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  font-family: "Lemonada";
+  font-size: 12px;
+}
+
+#headerlinkreceitas2 {
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+  margin-top: 4px;
+  font-family: "Lemonada";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#apresent {
+  margin-left: 350px;
+  width: 850px;
+  border-radius: 60px;
+  background-color: rgb(255, 221, 248);
+  font-family: 'Lemonada';
+}
+
+#apresent h1 {
+  font-size: 25px;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+#apresent h2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 15px;
+  color: gray;
+  margin-left: 80px;
+  padding-top: 80px;
+}
+
+#imagechef {
+  margin-left: 70px;
+}
+
+#smalltitle {
+  font-family: "Lemonada";
+  font-size: 10px;
+  padding: 20px;
+  margin-left: 350px;
+  margin-top: 20px;
+}
+
+#images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+#img {
+  font-family: "Lemonada";
+}
+
+#img h2 {
+  font-size: 12px;
+}
+
+#img h3 {
+  font-size: 10px;
+  color: gray;
+}
+
+#imagens {
+  width: 265px;
+  border-radius: 10px;
+}
+
+#bottom {
+  width: 1;
+  background-color: rgb(211, 211, 211);
+  text-align: center;
+  font-size: 5px;
+  font-family: "Lemonada";
+  color: rgb(148, 148, 148);
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* SOBRE */
+
+#sobre {
+  margin-left: 350px;
+  text-align: left;
+  max-width: 800px;
+  font-family: "Lemonada";
+  padding: 15px;
+}
+
+#sobre h1 {
+  font-size: 20px;
+}
+
+#sobre h2 {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+#sobre h3 {
+  font-size: 12px;
+  color: gray;
+  margin-top: 10px;
+}
