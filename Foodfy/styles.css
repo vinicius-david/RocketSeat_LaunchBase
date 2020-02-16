@@ -164,3 +164,43 @@ header {
   color: gray;
   margin-top: 10px;
 }
+
+/* MODAL */
+
+.modal {
+  background: rgb(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  opacity: 1;
+  visibility: hidden;
+}
+
+.mod {
+  width: 40%;
+  height: 40%;
+  background: white;
+  position: relative;
+  margin: 30vh auto;
+  border-radius: 30px;
+}
+
+.closemodal {
+  color: gray;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  left: 47%;
+}
+
+.mod.full {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
