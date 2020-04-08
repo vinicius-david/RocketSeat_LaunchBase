@@ -1,0 +1,49 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+
+/* Página Inicial */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background-color: rgb(77, 78, 143);
+}
+
+header {
+  background-color: rgb(51, 52, 117);
+  text-align: center;
+  padding: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.links a + a {
+  margin-left: 20px;
+}
+
+.links a:hover {
+  color: rgb(135, 154, 207);
+  transition: 500ms;
+}
+
+.links a::after {
+  content: "";
+  width: 0%;
+  height: 1px;
+  background-color: rgb(135, 154, 207);
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+
+.links a:hover::after {
+  transition: width 500ms ease-in;
+  width: 100%;
+}
