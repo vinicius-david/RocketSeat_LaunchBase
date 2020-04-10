@@ -29,7 +29,7 @@ header {
 }
 
 .links a:hover {
-  color: rgb(135, 154, 207);
+  color: rgb(255, 102, 217);
   transition: 500ms;
 }
 
@@ -37,7 +37,7 @@ header {
   content: "";
   width: 0%;
   height: 1px;
-  background-color: rgb(135, 154, 207);
+  background-color: rgb(255, 102, 217);
   position: absolute;
   left: 0;
   bottom: -3px;
@@ -47,3 +47,116 @@ header {
   transition: width 500ms ease-in;
   width: 100%;
 }
+
+.links .selecionado {
+  background-color: rgb(91, 45, 133);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+/* Card da página de Professores */
+
+.card {
+  background-color: rgb(255, 255, 255);
+  width: 800px;
+  min-height: 400px;
+  margin: 45px auto;
+  border-radius: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.5);
+
+  animation-name: up ;
+  animation-duration: 800ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detalhes {
+  padding: 30px;
+}
+
+.detalhes .item {
+  padding: 10px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.detalhes .item:last-child {
+  border: none;
+}
+
+.detalhes .item div:nth-child(1) {
+  font-size: 14px;
+  color: rgb(124, 124, 124);
+  line-height: 22px;
+  letter-spacing: 0.8px;
+}
+
+.detalhes .item div:nth-child(2) {
+  color: rgb(61, 61, 61);
+  font-weight: bold;
+}
+
+.detalhes h3 {
+  text-transform: uppercase;
+  color: rgb(51, 52, 117);
+  font-weight: bold;
+}
+
+.detalhes .item span {
+  padding: 6px 12px;
+  background-color: rgb(122, 45, 133);
+  border-radius: 12px;
+  color: rgb(218, 218, 218);
+  margin-right: 4px;
+  margin-top: 6px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* Formulário de adicionar professores */
+
+input {
+  outline: none;
+  width: 100%;
+  color: rgb(61, 61, 61);
+  font-weight: bold;
+}
+
+input::placeholder {
+  font-size: 12px;
+}
+
+input[type=radio] {
+  width: initial;
+  margin-right: 8px;
+}
+
+button[type=submit] {
+  background-color: rgb(122, 45, 133);
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 20px;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+}
+
+button[type=submit]:hover {
+  cursor: pointer;
+  background-color: rgba(122, 45, 133, 0.9);
+  transition: 400ms;
+}
+
