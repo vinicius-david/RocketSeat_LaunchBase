@@ -144,7 +144,8 @@ input[type=radio] {
   margin-right: 8px;
 }
 
-button[type=submit] {
+button[type=submit],
+a.button {
   background-color: rgb(122, 45, 133);
   width: 100%;
   padding: 8px 12px;
@@ -154,9 +155,16 @@ button[type=submit] {
   font-size: 14px;
 }
 
-button[type=submit]:hover {
+button[type=submit]:hover,
+a.button:hover {
   cursor: pointer;
   background-color: rgba(122, 45, 133, 0.9);
   transition: 400ms;
 }
 
+a.button {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
