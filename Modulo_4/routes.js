@@ -14,9 +14,13 @@ routes.get('/professores/adicionar', function (req, res) {
   return res.render('adicionar')
 })
 
+routes.get('/professores/:id/edit', professores.edit)
+
 routes.get('/professores/:id', professores.show)
 
 routes.post('/professores', professores.post)
+
+routes.put('/professores', professores.put)
 
 routes.get('/alunos', function(req, res) {
   return res.render('alunos')
