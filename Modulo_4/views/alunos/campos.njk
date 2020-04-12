@@ -1,0 +1,103 @@
+<div class='item'>
+
+  <div>Nome</div>
+
+  <div>
+    <input type='text' name='nome' placeholder='Nome do aluno' value='{{ aluno.nome }}'>        
+  </div>
+
+</div>
+
+<div class='item'>
+
+  <div>Avatar URL</div>
+
+  <div>
+    <input type='url' name='avatar_url' placeholder='http://' value='{{ aluno.avatar_url }}'>
+  </div>
+
+</div>
+
+<div class='item'>
+
+  <div>Email</div>
+
+  <div>
+    <input type='email' name='email' placeholder='example@example.com' value='{{ aluno.email }}'>        
+  </div>
+
+</div>
+
+<div class='item'>
+
+  <div>Data de nascimento</div>
+
+  <div>
+    <input type='date' name='nascimento' value='{{ aluno.nascimento }}'>
+  </div>
+
+</div>
+
+<div class='item'>
+
+  <div>Ano Escolar</div>
+
+  <div>
+    <select name='ano_escolar'>
+
+      <option value='5F'
+        {% if aluno.ano_escolar == '5F' %}selected{% endif %}>
+        5° ano do Ensino Fundamental
+      </option>
+
+      <option value='6F'
+        {% if aluno.ano_escolar == '6F' %}selected{% endif %}>
+        6° ano do Ensino Fundamental
+      </option>
+
+      <option value='7F'
+        {% if aluno.ano_escolar == '7F' %}selected{% endif %}>
+        7° ano do Ensino Fundamental
+      </option>
+
+      <option value='8F'
+        {% if aluno.ano_escolar == '8F' %}selected{% endif %}>
+        8° ano do Ensino Fundamental
+      </option>
+
+      <option value='9F'
+        {% if aluno.ano_escolar == '9F' %}selected{% endif %}>
+        9° ano do Ensino Fundamental
+      </option>
+
+      <option value='1M'
+        {% if aluno.ano_escolar == '1M' %}selected{% endif %}>
+        1° ano do Ensino Médio
+      </option>
+
+      <option value='2M'
+        {% if aluno.ano_escolar == '2M' %}selected{% endif %}>
+        2° ano do Ensino Médio
+      </option>
+
+      <option value='3M'
+        {% if aluno.ano_escolar == '3M' %}selected{% endif %}>
+        3° ano do Ensino Médio
+      </option>
+
+    </select>
+  </div>
+
+</div>
+
+<div class='item'>
+
+  <div>Carga horária semanal</div>
+
+  <div>
+    <input type='number' name='carga_horaria' value='{{ aluno.carga_horaria }}'>
+  </div>
+
+</div>
+
+<button type='submit'>Salvar</button>

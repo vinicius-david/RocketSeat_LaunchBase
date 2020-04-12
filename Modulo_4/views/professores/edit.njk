@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Professores</title>
+
+</head>
+
+<body>
+
+  <header>
+
+    <div class='links'>
+
+      <a class='selecionado' href="/professores">Professores</a>
+      <a href="/alunos">Alunos</a>
+      
+    </div>
+
+  </header>
+
+  <div class='card'>
+
+    <section class='avatar' 
+      style="border-radius: 20px 0 0 20px; background: url({{professor.avatar_url}}) 
+      no-repeat center center / cover"></section>
+      
+    <section class='detalhes'>
+      
+      <h3>Editar professor(a)</h3>
+
+      <form method='POST' action='/professores?_method=PUT'>
+
+          {% include 'professores/campos.njk' %}
+
+          <input type='hidden' name='id' value={{professor.id}}>
+
+      </form>
+
+      <form id='form_delete' method='POST' action='/professores?_method=DELETE'>
+      
+        <input type='hidden' name='id' value={{professor.id}}>
+
+        <button type='submit'>Deletar</button>
+      
+      </form>
+
+    </section>
+
+  </div>
+  
+</body>
+
+<script>
+      
+  const formDelete = document.querySelector("#form_delete")
+
+  formDelete.addEventListener('submit', function(event) {
+
+    const confirmation = confirm('Deseja deletar?')
+    
+    if(!confirmation) {
+      event.preventDefault()
+    }
+  })
+      
+</script>
+
+</html>

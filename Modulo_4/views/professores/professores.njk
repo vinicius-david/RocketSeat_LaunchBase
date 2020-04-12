@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Professores</title>
+
+</head>
+
+<body>
+
+  <header>
+
+    <div class='links'>
+
+      <a class='selecionado' href="/professores">Professores</a>
+      <a href="/alunos">Alunos</a>
+      
+    </div>
+
+  </header>
+
+  <div class='card table-container'>
+
+    <a class='novo' href='professores/adicionar'>Novo</a>
+
+    <table width='100%'>
+
+      <thead>
+        <tr>
+          <th>Professor</th>
+          <th>Matérias</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {% for professor in professores %}
+
+        <tr>
+          <td>
+            <span style="background-image: url({{professor.avatar_url}})"></span>
+          {{professor.nome}}</td>
+          <td>
+              <span id='materias'>{{ professor.materias }}</span>
+          </td>
+          <td><a href='/professores/{{professor.id}}'>ver</a></td>
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+    </table>
+  </div>
+  
+</body>
+
+</html>
