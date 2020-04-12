@@ -128,7 +128,7 @@ header {
 
 /* Formulário de adicionar professores */
 
-input {
+input, select {
   outline: none;
   width: 100%;
   color: rgb(61, 61, 61);
@@ -144,7 +144,7 @@ input[type=radio] {
   margin-right: 8px;
 }
 
-button[type=submit],
+button[type='submit'],
 a.button {
   background-color: rgb(122, 45, 133);
   width: 100%;
@@ -155,11 +155,11 @@ a.button {
   font-size: 14px;
 }
 
-button[type=submit]:hover,
+button[type='submit']:hover,
 a.button:hover {
   cursor: pointer;
   background-color: rgba(122, 45, 133, 0.9);
-  transition: 400ms;
+  transition: 500ms;
 }
 
 a.button {
@@ -168,3 +168,102 @@ a.button {
   text-align: center;
   text-decoration: none;
 }
+
+#form_delete button[type='submit'] {
+  background-color: rgba(133, 0, 0, 0.9);
+  margin-top: 8px;
+}
+
+#form_delete button[type='submit']:hover {
+  background-color: rgba(133, 0, 0, 0.8);
+  cursor: pointer;
+  transition: 500ms;
+}
+
+/* Lista de professores */
+
+.table-container {
+  padding: 30px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.table-container td, th {
+  padding: 8px;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.5);
+}
+
+.table-container tr:last-child td {
+  border-bottom: none;
+}
+
+.table-container thead {
+  text-transform: uppercase;
+  color: rgb(51, 52, 117);
+}
+
+.table-container thead tr th:first-child {
+  text-align: left;
+}
+
+tbody tr td:first-child {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+
+tbody tr td:first-child span {
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 4px 2px 6px -4px black;
+  border: 1px solid rgb(214, 214, 214);
+}
+
+.table-container tbody tr td:last-child a {
+  background-color: rgba(122, 45, 133, 0.9);
+  padding: 6px 10px;
+  color: white;
+  border-radius: 6px;
+  font-size: 9px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.table-container tbody tr td:last-child a:hover {
+  background-color: rgba(122, 45, 133, 0.8);
+  transition: 500ms;
+}
+
+.novo {
+  background-color: rgba(122, 45, 133, 0.9);
+  padding: 6px 10px;
+  color: white;
+  border-radius: 6px;
+  font-size: 9px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.novo:hover {
+  background-color: rgba(122, 45, 133, 0.8);
+  transition: 500ms;
+}
+
+tbody {
+  text-align: center;
+}
+
+tbody tr td:first-child {
+  text-align: left;
+}
+
+/* Botão adicionar */
+
+/* .table tbody tr #materias {
+} */
