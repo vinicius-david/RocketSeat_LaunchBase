@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Alunos</title>
+
+</head>
+
+<body style="background: url(https://source.unsplash.com/collection/620529/800x800) no-repeat center center / cover">
+
+  <header>
+
+    <div class='links'>
+
+      <a href="/">Sobre</a>
+      <a href="/professores">Professores</a>
+      <a class='selecionado' href="/alunos">Alunos</a>
+      
+    </div>
+
+  </header>
+
+  <div class='card table-container'>
+
+    <a class='novo' href='alunos/adicionar'>Novo</a>
+
+    <table width='100%'>
+
+      <thead>
+        <tr>
+          <th>Alunos</th>
+          <th>Ano escolar</th>
+          <th>Email</th>
+          <th> </th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {% for aluno in alunos %}
+
+        <tr>
+          <td>
+            <span style="background-image: url({{aluno.avatar_url}})"></span>
+          {{aluno.nome}}</td>
+          <td>
+            {{ "5° ano do Ensino Fundamental" if aluno.ano_escolar == "5F" else 
+            ("6° ano do Ensino Fundamental" if aluno.ano_escolar == "6F" else 
+            ("7° ano do Ensino Fundamental" if aluno.ano_escolar == "7F" else 
+            ("8° ano do Ensino Fundamental" if aluno.ano_escolar == "8F" else 
+            ("9° ano do Ensino Fundamental" if aluno.ano_escolar == "9F" else 
+            ("1° ano do Ensino Médio" if aluno.ano_escolar == "1M" else 
+            ("2° ano do Ensino Médio" if aluno.ano_escolar == "2M" else "3° ano do Ensino Médio")))))) }}
+          </td>
+          <td>{{aluno.email}}</td>
+          <td><a href='/alunos/{{aluno.id}}'>ver</a></td>
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+    </table>
+  </div>
+  
+</body>
+
+</html>

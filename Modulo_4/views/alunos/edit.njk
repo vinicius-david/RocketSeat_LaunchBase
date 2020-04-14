@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Alunos</title>
+
+</head>
+
+<body style="background: url(https://source.unsplash.com/collection/620529/800x800) no-repeat center center / cover">
+
+  <header>
+
+    <div class='links'>
+
+      <a href="/">Sobre</a>
+      <a href="/professores">Professores</a>
+      <a class='selecionado' href="/alunos">Alunos</a>
+      
+    </div>
+
+  </header>
+
+  <div class='card'>
+
+    <section class='avatar' 
+      style="border-radius: 20px 0 0 20px; background: url({{aluno.avatar_url}}) 
+      no-repeat center center / cover"></section>
+      
+    <section class='detalhes'>
+      
+      <h3>Editar aluno(a)</h3>
+
+      <form method='POST' action='/alunos?_method=PUT'>
+
+          {% include 'alunos/campos.njk' %}
+
+          <input type='hidden' name='id' value={{aluno.id}}>
+
+      </form>
+
+      <form id='form_delete' method='POST' action='/alunos?_method=DELETE'>
+      
+        <input type='hidden' name='id' value={{aluno.id}}>
+
+        <button type='submit'>Deletar</button>
+      
+      </form>
+
+    </section>
+
+  </div>
+  
+</body>
+
+<script>
+
+  const formDelete = document.querySelector("#form_delete")
+
+  formDelete.addEventListener('submit', function(event) {
+
+    const confirmation = confirm('Deseja deletar?')
+    
+    if(!confirmation) {
+      event.preventDefault()
+    }
+  })
+      
+</script>
+
+</html>

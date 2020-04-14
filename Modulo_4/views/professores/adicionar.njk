@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Professores</title>
+
+</head>
+
+<body style="background: url(https://source.unsplash.com/collection/620529/1000x1000) no-repeat center center / cover">
+
+  <header>
+
+    <div class='links'>
+
+      <a href="/">Sobre</a>
+      <a class='selecionado' href="/professores">Professores</a>
+      <a href="/alunos">Alunos</a>
+      
+    </div>
+
+  </header>
+
+  <form class='card' method='POST' action='/professores'>
+
+    <section class='avatar' 
+    style="border-radius: 20px 0 0 20px; background: url(https://source.unsplash.com/collection/517198/600x600) 
+    no-repeat center center / cover"></section>
+    
+    <section class='detalhes'>
+    
+      <h3>Novo professor(a)</h3>
+
+      <div class='item'>
+
+        <div>Nome</div>
+
+        <div>
+          <input type='text' name='nome' placeholder='Nome do professor'>        
+        </div>
+
+      </div>
+
+      <div class='item'>
+
+        <div>Avatar URL</div>
+
+        <div>
+          <input type='url' name='avatar_url' placeholder='http://'>
+        </div>
+      
+      </div>
+
+      <div class='item'>
+
+        <div>Data de nascimento</div>
+
+        <div>
+          <input type='date' name='nascimento'>
+        </div>
+
+      </div>
+
+      <div class='item'>
+
+        <div>Grau de escolaridade</div>
+
+        <div>
+          <span><input type='radio' name='escolaridade' value='EM'>Ensino Médio Completo</span>
+          <span><input type='radio' name='escolaridade' value='ES'>Ensino Superior Completo</span>
+          <span><input type='radio' name='escolaridade' value='M'>Mestrado</span>
+          <span><input type='radio' name='escolaridade' value='D'>Doutorado</span>
+        </div>
+  
+      </div>
+
+      <div class='item'>
+
+        <div>Tipo de aula</div>
+
+        <div>
+          <span><input type='radio' name='aula' value='P'>Presencial</span>
+          <span><input type='radio' name='aula' value='D'>À distância</span>
+        </div>
+
+      </div>
+
+      <div class='item'>
+
+        <div>Matérias lecionadas</div>
+
+        <div>
+          <input type='text' name='materias' placeholder='Separe as matérias por vírgulas'>
+        </div>
+
+      </div>
+
+      <button type='submit'>Salvar</button>
+
+    </section>
+    
+  </form>
+  
+</body>
+
+</html>
