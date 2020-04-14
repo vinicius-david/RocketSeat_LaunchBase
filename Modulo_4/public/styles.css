@@ -1,5 +1,14 @@
 @import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
 
+:root {
+  --cor-principal: rgb(104, 137, 197);
+  --cor-p-escura: rgb(77, 77, 77);
+  --cor-transicao: rgb(199, 80, 80);
+  --cor-button: rgb(32, 44, 114);
+  --cor-button-transicao: rgba(42, 63, 220);
+  --cor-head: rgb(25, 40, 121);
+}
+
 /* Página Inicial */
 
 * {
@@ -9,11 +18,11 @@
 }
 
 body {
-  background-color: rgb(77, 78, 143);
+  background-color: var(--cor-principal);
 }
 
 header {
-  background-color: rgb(51, 52, 117);
+  background-color: var(--cor-p-escura);
   text-align: center;
   padding: 20px;
 }
@@ -29,7 +38,7 @@ header {
 }
 
 .links a:hover {
-  color: rgb(255, 102, 217);
+  color: var(--cor-transicao);
   transition: 500ms;
 }
 
@@ -37,7 +46,7 @@ header {
   content: "";
   width: 0%;
   height: 1px;
-  background-color: rgb(255, 102, 217);
+  background-color: var(--cor-transicao);
   position: absolute;
   left: 0;
   bottom: -3px;
@@ -49,7 +58,7 @@ header {
 }
 
 .links .selecionado {
-  background-color: rgb(91, 45, 133);
+  background-color: var(--cor-principal);
   padding: 4px 8px;
   border-radius: 12px;
 }
@@ -110,13 +119,13 @@ header {
 
 .detalhes h3 {
   text-transform: uppercase;
-  color: rgb(51, 52, 117);
+  color: var(--cor-head);
   font-weight: bold;
 }
 
 .detalhes .item span {
   padding: 6px 12px;
-  background-color: rgb(122, 45, 133);
+  background-color: var(--cor-button);
   border-radius: 12px;
   color: rgb(218, 218, 218);
   margin-right: 4px;
@@ -146,7 +155,7 @@ input[type=radio] {
 
 button[type='submit'],
 a.button {
-  background-color: rgb(122, 45, 133);
+  background-color: var(--cor-button);
   width: 100%;
   padding: 8px 12px;
   margin-top: 20px;
@@ -158,8 +167,7 @@ a.button {
 button[type='submit']:hover,
 a.button:hover {
   cursor: pointer;
-  background-color: rgba(122, 45, 133, 0.9);
-  transition: 500ms;
+  background-color: var(--cor-button-transicao);
 }
 
 a.button {
@@ -199,7 +207,7 @@ a.button {
 
 .table-container thead {
   text-transform: uppercase;
-  color: rgb(51, 52, 117);
+  color: var(--cor-head);
 }
 
 .table-container thead tr th:first-child {
@@ -223,7 +231,7 @@ tbody tr td:first-child span {
 }
 
 .table-container tbody tr td:last-child a {
-  background-color: rgba(122, 45, 133, 0.9);
+  background-color: var(--cor-button);
   padding: 6px 10px;
   color: white;
   border-radius: 6px;
@@ -234,12 +242,12 @@ tbody tr td:first-child span {
 }
 
 .table-container tbody tr td:last-child a:hover {
-  background-color: rgba(122, 45, 133, 0.8);
+  background-color: var(--cor-button-transicao);
   transition: 500ms;
 }
 
 .novo {
-  background-color: rgba(122, 45, 133, 0.9);
+  background-color: var(--cor-button);
   padding: 6px 10px;
   color: white;
   border-radius: 6px;
@@ -251,7 +259,7 @@ tbody tr td:first-child span {
 }
 
 .novo:hover {
-  background-color: rgba(122, 45, 133, 0.8);
+  background-color: var(--cor-button-transicao);
   transition: 500ms;
 }
 
@@ -267,3 +275,32 @@ tbody tr td:first-child {
 
 /* .table tbody tr #materias {
 } */
+
+/* Pagina inicial */
+
+.card2 {
+  background-color: rgb(255, 255, 255);
+  width: 800px;
+  min-height: 180px;
+  margin: 45px auto;
+  border-radius: 20px;
+
+  display: block;
+
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.5);
+
+  animation-name: up ;
+  animation-duration: 800ms;
+  animation-timing-function: ease-out;
+
+  padding: 30px;
+}
+
+.card2 h1 {
+  font-size: 30px;
+}
+
+.card2 h2 {
+  font-size: 20px;
+  margin-top: 30px;
+}
