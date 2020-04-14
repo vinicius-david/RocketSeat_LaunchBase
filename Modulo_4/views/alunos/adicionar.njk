@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <html lang="en">
@@ -43,3 +44,50 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Alunos</title>
+
+</head>
+
+<body style="background: url(https://source.unsplash.com/collection/620529/800x800) no-repeat center center / cover">
+
+  <header>
+
+    <div class='links'>
+
+      <a href="/">Sobre</a>
+      <a href="/professores">Professores</a>
+      <a class='selecionado' href="/alunos">Alunos</a>
+      
+    </div>
+
+  </header>
+
+  <form class='card' method='POST' action='/alunos'>
+
+    <section class='avatar' 
+    style="border-radius: 20px 0 0 20px; background: url(https://source.unsplash.com/collection/517198/600x600) 
+    no-repeat center center / cover"></section>
+    
+    <section class='detalhes'>
+    
+      <h3>Novo aluno(a)</h3>
+
+      {% include 'alunos/campos.njk' %}
+
+    </section>
+    
+  </form>
+  
+</body>
+
+</html>
+>>>>>>> 82876af058933e7ca96427a1734539b283aee1f8

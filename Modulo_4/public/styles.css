@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
 
 :root {
@@ -304,3 +305,311 @@ tbody tr td:first-child {
   font-size: 20px;
   margin-top: 30px;
 }
+=======
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+
+:root {
+  --cor-principal: rgb(104, 137, 197);
+  --cor-p-escura: rgb(77, 77, 77);
+  --cor-transicao: rgb(199, 80, 80);
+  --cor-button: rgb(32, 44, 114);
+  --cor-button-transicao: rgba(42, 63, 220);
+  --cor-head: rgb(25, 40, 121);
+}
+
+/* Página Inicial */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background-color: var(--cor-principal);
+}
+
+header {
+  background-color: var(--cor-p-escura);
+  text-align: center;
+  padding: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.links a + a {
+  margin-left: 20px;
+}
+
+.links a:hover {
+  color: var(--cor-transicao);
+  transition: 500ms;
+}
+
+.links a::after {
+  content: "";
+  width: 0%;
+  height: 1px;
+  background-color: var(--cor-transicao);
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+
+.links a:hover::after {
+  transition: width 500ms ease-in;
+  width: 100%;
+}
+
+.links .selecionado {
+  background-color: var(--cor-principal);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+/* Card da página de Professores */
+
+.card {
+  background-color: rgb(255, 255, 255);
+  width: 800px;
+  min-height: 400px;
+  margin: 45px auto;
+  border-radius: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.5);
+
+  animation-name: up ;
+  animation-duration: 800ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detalhes {
+  padding: 30px;
+}
+
+.detalhes .item {
+  padding: 10px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.detalhes .item:last-child {
+  border: none;
+}
+
+.detalhes .item div:nth-child(1) {
+  font-size: 14px;
+  color: rgb(124, 124, 124);
+  line-height: 22px;
+  letter-spacing: 0.8px;
+}
+
+.detalhes .item div:nth-child(2) {
+  color: rgb(61, 61, 61);
+  font-weight: bold;
+}
+
+.detalhes h3 {
+  text-transform: uppercase;
+  color: var(--cor-head);
+  font-weight: bold;
+}
+
+.detalhes .item span {
+  padding: 6px 12px;
+  background-color: var(--cor-button);
+  border-radius: 12px;
+  color: rgb(218, 218, 218);
+  margin-right: 4px;
+  margin-top: 6px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* Formulário de adicionar professores */
+
+input, select {
+  outline: none;
+  width: 100%;
+  color: rgb(61, 61, 61);
+  font-weight: bold;
+}
+
+input::placeholder {
+  font-size: 12px;
+}
+
+input[type=radio] {
+  width: initial;
+  margin-right: 8px;
+}
+
+button[type='submit'],
+a.button {
+  background-color: var(--cor-button);
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 20px;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+}
+
+button[type='submit']:hover,
+a.button:hover {
+  cursor: pointer;
+  background-color: var(--cor-button-transicao);
+}
+
+a.button {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+#form_delete button[type='submit'] {
+  background-color: rgba(133, 0, 0, 0.9);
+  margin-top: 8px;
+}
+
+#form_delete button[type='submit']:hover {
+  background-color: rgba(133, 0, 0, 0.8);
+  cursor: pointer;
+  transition: 500ms;
+}
+
+/* Lista de professores */
+
+.table-container {
+  padding: 30px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.table-container td, th {
+  padding: 8px;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.5);
+}
+
+.table-container tr:last-child td {
+  border-bottom: none;
+}
+
+.table-container thead {
+  text-transform: uppercase;
+  color: var(--cor-head);
+}
+
+.table-container thead tr th:first-child {
+  text-align: left;
+}
+
+tbody tr td:first-child {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+
+tbody tr td:first-child span {
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 4px 2px 6px -4px black;
+  border: 1px solid rgb(214, 214, 214);
+}
+
+.table-container tbody tr td:last-child a {
+  background-color: var(--cor-button);
+  padding: 6px 10px;
+  color: white;
+  border-radius: 6px;
+  font-size: 9px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.table-container tbody tr td:last-child a:hover {
+  background-color: var(--cor-button-transicao);
+  transition: 500ms;
+}
+
+.novo {
+  background-color: var(--cor-button);
+  padding: 6px 10px;
+  color: white;
+  border-radius: 6px;
+  font-size: 9px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.novo:hover {
+  background-color: var(--cor-button-transicao);
+  transition: 500ms;
+}
+
+tbody {
+  text-align: center;
+}
+
+tbody tr td:first-child {
+  text-align: left;
+}
+
+/* Botão adicionar */
+
+/* .table tbody tr #materias {
+} */
+
+/* Pagina inicial */
+
+.card2 {
+  background-color: rgb(255, 255, 255);
+  width: 800px;
+  min-height: 180px;
+  margin: 45px auto;
+  border-radius: 20px;
+
+  display: block;
+
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.5);
+
+  animation-name: up ;
+  animation-duration: 800ms;
+  animation-timing-function: ease-out;
+
+  padding: 30px;
+}
+
+.card2 h1 {
+  font-size: 30px;
+}
+
+.card2 h2 {
+  font-size: 20px;
+  margin-top: 30px;
+}
+>>>>>>> 82876af058933e7ca96427a1734539b283aee1f8
