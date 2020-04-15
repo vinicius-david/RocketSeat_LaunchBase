@@ -27,7 +27,8 @@ module.exports = {
       mes,
       ano,
       iso: `${ano}-${mes}-${dia}`,
-      diaNascimento: `${dia}/${mes}`
+      diaNascimento: `${dia}/${mes}`,
+      format: `${dia}-${mes}-${ano}`
     }
 
   }

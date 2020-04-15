@@ -1,16 +1,13 @@
+const Professor = require('../models/professor');
 const { calcularIdade, calcularData } = require('../../lib/util');
-const db = require('../../config/db');
 
 module.exports = {
   lista(req, res){
     
-    db.query('SELECT * FROM professores', function(err, results) {
-
-      if (err) return res.send('Database error.')
-      
-      return res.render('professores/professores', {professores: results.rows})
+    Professor.all(function(professores) {
+      return res.render('professores/professores', {professores})
     })
-
+    
     
   },
   adicionar(req, res){
@@ -27,42 +24,33 @@ module.exports = {
       }
     }
 
-    const query = `
-      INSERT INTO professores (
-        nome,
-        avatar_url,
-        nascimento,
-        escolaridade,
-        aula,
-        materias,
-        data_criacao
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
-      RETURNING id
-    `
-
-    const values = [
-      req.body.nome,
-      req.body.avatar_url,
-      calcularData(req.body.nascimento).iso,
-      req.body.escolaridade,
-      req.body.aula,
-      req.body.materias,
-      calcularData(Date.now()).iso
-    ]
-
-    db.query(query, values, function(err, results) {
-      if (err) return res.send('Database error.')
-
-      return res.redirect(`/professores/${results.rows[0].id}`)
+    Professor.create(req.body, function(professor) {
+      return res.redirect(`professores/${professor.id}`)
     })
   
   },
   show(req, res){
 
+      Professor.find(req.params.id, function(professor) {
+        if (!professor) return res.send('Professor não encontrado.')
+
+        professor.nascimento = calcularIdade(professor.nascimento)
+        professor.materias = professor.materias.split(',')
+        professor.data_criacao = calcularData(professor.data_criacao).format
+
+        return res.render('professores/show', { professor })
+      })
     return
   },
   edit(req, res){
 
+      Professor.find(req.params.id, function(professor) {
+        if (!professor) return res.send('Professor não encontrado.')
+
+        professor.nascimento = calcularData(professor.nascimento).iso
+
+        return res.render('professores/edit', { professor })
+      })
     return
   },
   put(req, res){
@@ -75,10 +63,15 @@ module.exports = {
       }
     }
   
-    return
+    Professor.update(req.body, function() {
+      return res.redirect(`professores/${req.body.id}`)
+    })
   },
   delete(req, res){
 
+    Professor.delete(req.body.id, function() {
+      return res.redirect('/professores')
+    })
     return
   },
 }
