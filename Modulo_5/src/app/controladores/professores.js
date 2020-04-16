@@ -3,11 +3,22 @@ const { calcularIdade, calcularData } = require('../../lib/util');
 
 module.exports = {
   lista(req, res){
-    
-    Professor.all(function(professores) {
-      return res.render('professores/professores', {professores})
-    })
-    
+
+    const { busca } = req.query
+
+    if (busca) {
+
+      Professor.findBy(busca, function(professores){
+        return res.render('professores/professores', {professores, busca})
+      })
+
+    } else {
+
+      Professor.all(function(professores) {
+        return res.render('professores/professores', {professores})
+      })
+
+    }
     
   },
   adicionar(req, res){

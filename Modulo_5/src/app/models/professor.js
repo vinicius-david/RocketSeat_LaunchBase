@@ -60,6 +60,24 @@ module.exports = {
         callback(results.rows[0])
     })
   },
+  findBy(busca, callback) {
+
+    db.query(`
+      SELECT professores.*, count(alunos) AS total_alunos 
+      FROM professores
+      LEFT JOIN alunos ON (alunos.professor_id = professores.id)
+      WHERE professores.nome ILIKE '%${busca}%'
+      OR professores.materias ILIKE '%${busca}%'
+      GROUP by professores.id`, 
+      
+      function(err, results) {
+
+        if (err) throw `Database error. ${err}`
+      
+      callback(results.rows)
+    })
+
+  },
   update(data, callback) {
     const query = `
     UPDATE professores SET 

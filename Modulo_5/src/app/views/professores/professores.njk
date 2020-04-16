@@ -26,7 +26,23 @@
 
   <div class='card table-container'>
 
-    <a class='novo' href='professores/adicionar'>Novo</a>
+    <div class='header'>
+
+      <a class='novo' href='/professores/adicionar'>Novo</a>
+
+      <form action='/professores' method='GET'>
+
+        <input 
+          type='text' 
+          name='busca' 
+          placeholder='Buscar pelo nome ou materias'
+          value='{{busca}}'>
+
+      <button type='submit'>Buscar</button>
+      
+      </form>
+
+    </div>
 
     <table width='100%'>
 

@@ -3,7 +3,7 @@
 :root {
   --cor-principal: rgb(104, 137, 197);
   --cor-p-escura: rgb(77, 77, 77);
-  --cor-transicao: rgb(199, 80, 80);
+  --cor-transicao: rgb(0, 238, 255);
   --cor-button: rgb(32, 44, 114);
   --cor-button-transicao: rgba(42, 63, 220);
   --cor-head: rgb(25, 40, 121);
@@ -168,6 +168,7 @@ button[type='submit']:hover,
 a.button:hover {
   cursor: pointer;
   background-color: var(--cor-button-transicao);
+  transition: 500ms;
 }
 
 a.button {
@@ -183,7 +184,7 @@ a.button {
 }
 
 #form_delete button[type='submit']:hover {
-  background-color: rgba(133, 0, 0, 0.8);
+  background-color: rgba(133, 0, 0, 0.7);
   cursor: pointer;
   transition: 500ms;
 }
@@ -263,6 +264,12 @@ tbody tr td:first-child span {
   transition: 500ms;
 }
 
+.table-container .header .novo {
+  width: 76px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
 tbody {
   text-align: center;
 }
@@ -270,11 +277,6 @@ tbody {
 tbody tr td:first-child {
   text-align: left;
 }
-
-/* Botão adicionar */
-
-/* .table tbody tr #materias {
-} */
 
 /* Pagina inicial */
 
@@ -304,3 +306,38 @@ tbody tr td:first-child {
   font-size: 20px;
   margin-top: 30px;
 }
+
+/* Botao de Busca */
+
+.table-container .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.table-container .header a {
+  width: 24px;
+}
+
+.table-container .header form {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  align-items: center;
+  grid-gap: 8px;
+}
+
+.table-container .header form button {
+  margin-top: 0px;
+  height: 26px;
+  font-size: 9px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.table-container .header form input {
+  border: solid 1px #eee;
+  margin-bottom: 15px;
+  padding: 2px 4px;
+  box-sizing: border-box;
+}
+
