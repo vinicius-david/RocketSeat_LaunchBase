@@ -23,8 +23,9 @@ module.exports = {
         email,
         ano_escolar,
         carga_horaria,
-        data_criacao
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+        data_criacao,
+        professor_id
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING id
     `
 
@@ -35,7 +36,8 @@ module.exports = {
       data.email,
       data.ano_escolar,
       data.carga_horaria,
-      calcularData(Date.now()).iso
+      calcularData(Date.now()).iso,
+      data.professor_id
     ]
 
     db.query(query, values, function(err, results) {
@@ -46,9 +48,10 @@ module.exports = {
 
   },
   find(id, callback) {
-    db.query(`SELECT * 
+    db.query(`SELECT alunos.*, professores.nome AS professor_nome
       FROM alunos 
-      WHERE id = $1`, [id], function(err, results) {
+      LEFT JOIN professores ON (alunos.professor_id = professores.id)
+      WHERE alunos.id = $1`, [id], function(err, results) {
         if (err) throw `Database error. ${err}`
 
         callback(results.rows[0])
@@ -62,8 +65,9 @@ module.exports = {
       nascimento=($3), 
       email=($4), 
       ano_escolar=($5), 
-      carga_horaria=($6)
-    WHERE id = $7  
+      carga_horaria=($6),
+      professor_id=($7)
+    WHERE id = $8  
     `
 
     const values = [
@@ -73,6 +77,7 @@ module.exports = {
       data.email,
       data.ano_escolar,
       data.carga_horaria,
+      data.professor,
       data.id
     ]
 
@@ -88,6 +93,14 @@ module.exports = {
       if (err) return `Database error. ${err}`
 
       return callback() 
+    })
+  },
+  professorSelect(callback) {
+
+    db.query(`SELECT nome, id FROM professores`, function(err, results) {
+      if(err) throw `Database error. ${err}`
+
+      callback(results.rows)
     })
   }
 }

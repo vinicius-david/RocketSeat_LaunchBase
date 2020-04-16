@@ -12,7 +12,10 @@ module.exports = {
   },
   adicionar(req, res){
 
-    return res.render('alunos/adicionar')
+    Aluno.professorSelect(function(options){
+      return res.render('alunos/adicionar', { professorOpcoes: options })
+    })
+
   },
   post(req, res){
 
@@ -48,9 +51,11 @@ module.exports = {
 
         aluno.nascimento = calcularData(aluno.nascimento).iso
 
-        return res.render('alunos/edit', { aluno })
+        Aluno.professorSelect(function(options){
+          return res.render('alunos/edit', { aluno, professorOpcoes: options })
+        })
+
       })
-    return
   },
   put(req, res){
 

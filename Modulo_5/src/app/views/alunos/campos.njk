@@ -100,4 +100,23 @@
 
 </div>
 
+<div class='item'>
+
+  <div>Professor</div>
+
+  <div>
+    <select name='professor'>
+
+      {% for professor in professorOpcoes %}
+      <option value='{{professor.id}}'
+        {% if aluno.professor_id == '{{professor.id}}' %}selected{% endif %}>
+        {{professor.nome}}
+      </option>
+      {%endfor%}
+
+    </select>
+  </div>
+
+</div>
+
 <button type='submit'>Salvar</button>
