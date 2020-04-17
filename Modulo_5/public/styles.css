@@ -341,3 +341,26 @@ tbody tr td:first-child {
   box-sizing: border-box;
 }
 
+/* Paginacao */
+
+.table-container {
+  display: grid;
+  grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .pagination {
+  justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+  text-decoration: none;
+  color: var(--cor-button);
+  font-weight: bold;
+  margin-right: 6px;
+  padding: 2px;
+}
+
+.pagination a:hover {
+  color: var(--cor-button-transicao);
+}

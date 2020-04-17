@@ -31,19 +31,26 @@ function paginate(totalPages, selectedPage) {
 const pagination = document.querySelector('.pagination')
 const page = +pagination.dataset.page
 const total = +pagination.dataset.total
+const busca = pagination.dataset.busca
 const pages = paginate(total, page)
 
 let elements = ""
 
-for(let page of pages) {
+for (let page of pages) {
 
-  if(String(page).includes('...')) {
+  if (String(page).includes('...')) {
 
     elements += `<span>${page}</span>`
 
   } else {
-    
-    elements += `<a href='?page=${page}'>${page}<a/>`
+
+    if (busca) {
+
+      elements += `<a href='?page=${page}&busca=${busca}'>${page}<a/>`
+    } else {
+
+      elements += `<a href='?page=${page}'>${page}<a/>`
+    }
   }
 }
 
