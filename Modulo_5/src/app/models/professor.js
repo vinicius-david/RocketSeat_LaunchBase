@@ -113,5 +113,43 @@ module.exports = {
 
       return callback() 
     })
+  },
+  pagination(params) {
+
+    const { busca, limite, offset, callback } = params
+
+    let query = "",
+        buscaQuery = "",
+        totalQuery = `(
+        SELECT count(*) FROM professores
+        ) AS total`
+
+    if (busca) {
+
+      buscaQuery = `
+      WHERE professores.nome ILIKE '%${busca}%'
+      OR professores.materias ILIKE '%${busca}%'`
+
+      totalQuery = `(
+      SELECT count(*) FROM professores
+      ${buscaQuery}
+      ) as total`
+    }
+
+    query = `
+    SELECT professores.*, ${totalQuery}, count(alunos) AS total_alunos 
+    FROM professores
+    LEFT JOIN alunos ON (professores.id = alunos.professor_id)
+    ${buscaQuery}
+    GROUP BY professores.id 
+    ORDER BY professores.nome
+    LIMIT $1 OFFSET $2`
+
+    db.query(query, [limite, offset], function(err, results){
+      if (err) throw `Database error. ${err}`
+
+      callback(results.rows)
+    })
+
   }
 }

@@ -4,21 +4,29 @@ const { calcularIdade, calcularData } = require('../../lib/util');
 module.exports = {
   lista(req, res){
 
-    const { busca } = req.query
+    let { busca, page, limite } = req.query
 
-    if (busca) {
+    page = page || 1
+    limite = limite || 2
+    let offset = limite * ( page - 1 )
 
-      Professor.findBy(busca, function(professores){
-        return res.render('professores/professores', {professores, busca})
-      })
+    const params = {
+      busca,
+      page,
+      limite,
+      offset,
+      callback(professores){
 
-    } else {
+        const pagination = {
+          total: Math.ceil(professores[0].total / limite),
+          page
+        }
 
-      Professor.all(function(professores) {
-        return res.render('professores/professores', {professores})
-      })
-
+        return res.render('professores/professores', {professores, pagination, busca})
+      }
     }
+
+    Professor.pagination(params)
     
   },
   adicionar(req, res){
