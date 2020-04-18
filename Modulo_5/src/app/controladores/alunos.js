@@ -3,11 +3,30 @@ const { calcularIdade, calcularData } = require('../../lib/util');
 
 module.exports = {
   lista(req, res){
-    
-    Aluno.all(function(alunos) {
-      return res.render('alunos/alunos', {alunos})
-    })
-    
+
+    let { busca, page, limite } = req.query
+
+    page = page || 1
+    limite = limite || 3
+    let offset = limite * ( page - 1 )
+
+    const params = {
+      busca,
+      page,
+      limite,
+      offset,
+      callback(alunos){
+
+        const pagination = {
+          total: Math.ceil(alunos[0].total / limite),
+          page
+        }
+
+        return res.render('alunos/alunos', {alunos, pagination, busca})
+      }
+    }
+
+    Aluno.pagination(params)
     
   },
   adicionar(req, res){

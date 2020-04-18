@@ -26,7 +26,23 @@
 
   <div class='card table-container'>
 
-    <a class='novo' href='alunos/adicionar'>Novo</a>
+    <div class='header'> 
+
+      <a class='novo' href='/alunos/adicionar'>Novo</a>
+
+      <form action='/alunos' method='GET'>
+
+        <input 
+          type='text' 
+          name='busca' 
+          placeholder='Buscar pelo nome'
+          value='{{busca}}'>
+
+      <button type='submit'>Buscar</button>
+      
+      </form>
+
+    </div>
 
     <table width='100%'>
 
@@ -65,7 +81,16 @@
       </tbody>
 
     </table>
+
+    <div class='pagination' 
+    data-page={{pagination.page}} 
+    data-total={{pagination.total}}
+    data-busca={{busca}}>
+    </div>
+
   </div>
+
+  <script src="/scripts.js"></script>
   
 </body>
 

@@ -102,5 +102,41 @@ module.exports = {
 
       callback(results.rows)
     })
+  },
+  pagination(params) {
+
+    const { busca, limite, offset, callback } = params
+
+    let query = "",
+        buscaQuery = "",
+        totalQuery = `(
+        SELECT count(*) FROM alunos
+        ) AS total`
+
+    if (busca) {
+
+      buscaQuery = `
+      WHERE alunos.nome ILIKE '%${busca}%'
+      OR alunos.email ILIKE '%${busca}%'`
+
+      totalQuery = `(
+      SELECT count(*) FROM alunos
+      ${buscaQuery}
+      ) as total`
+    }
+
+    query = `
+    SELECT alunos.*, ${totalQuery}
+    FROM alunos
+    ${buscaQuery}
+    ORDER BY alunos.nome
+    LIMIT $1 OFFSET $2`
+
+    db.query(query, [limite, offset], function(err, results){
+      if (err) throw `Database error. ${err}`
+
+      callback(results.rows)
+    })
+
   }
 }
