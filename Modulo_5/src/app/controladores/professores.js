@@ -17,17 +17,24 @@ module.exports = {
       offset,
       callback(professores){
 
-        const pagination = {
+        if (professores[0]) {
+
+          const pagination = {
           total: Math.ceil(professores[0].total / limite),
           page
         }
 
         return res.render('professores/professores', {professores, pagination, busca})
+
+        } else {
+
+          return res.render('professores/naoEncontrado')
+        }
       }
     }
 
     Professor.pagination(params)
-    
+
   },
   adicionar(req, res){
 
@@ -92,5 +99,5 @@ module.exports = {
       return res.redirect('/professores')
     })
     return
-  },
+  }
 }

@@ -17,12 +17,18 @@ module.exports = {
       offset,
       callback(alunos){
 
-        const pagination = {
+        if (alunos[0]) {
+
+          const pagination = {
           total: Math.ceil(alunos[0].total / limite),
           page
         }
 
         return res.render('alunos/alunos', {alunos, pagination, busca})
+        } else {
+
+          return res.render('alunos/naoEncontrado')
+        }
       }
     }
 
