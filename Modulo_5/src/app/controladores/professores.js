@@ -7,7 +7,7 @@ module.exports = {
     let { busca, page, limite } = req.query
 
     page = page || 1
-    limite = limite || 2
+    limite = limite || 5
     let offset = limite * ( page - 1 )
 
     const params = {
@@ -58,7 +58,7 @@ module.exports = {
   show(req, res){
 
       Professor.find(req.params.id, function(professor) {
-        if (!professor) return res.send('Professor não encontrado.')
+        if (!professor) return res.render('professores/naoEncontrado')
 
         professor.nascimento = calcularIdade(professor.nascimento)
         professor.materias = professor.materias.split(',')

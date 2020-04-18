@@ -37,7 +37,7 @@ module.exports = {
       data.ano_escolar,
       data.carga_horaria,
       calcularData(Date.now()).iso,
-      data.professor_id
+      data.professor
     ]
 
     db.query(query, values, function(err, results) {
