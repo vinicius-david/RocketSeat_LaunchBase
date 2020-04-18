@@ -283,7 +283,7 @@ tbody tr td:first-child {
 .card2 {
   background-color: rgb(255, 255, 255);
   width: 800px;
-  min-height: 180px;
+  min-height: 240px;
   margin: 45px auto;
   border-radius: 20px;
 
@@ -363,4 +363,11 @@ tbody tr td:first-child {
 
 .pagination a:hover {
   color: var(--cor-button-transicao);
+}
+
+/* Pagina de não encontrado */
+
+.naoencontrado {
+  font-size: 16px;
+  font-weight: bold;
 }
