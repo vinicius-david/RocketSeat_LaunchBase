@@ -21,7 +21,7 @@
 
 <div class='item'>
 
-  <div>Nome</div>
+  <div>Título</div>
   
   <div>
 
@@ -40,9 +40,7 @@
   
   <div>
 
-    <textarea name='description'>
-      {{product.description}}
-    </textarea>
+    <textarea name='description'>{{product.description}}</textarea>
     
   </div>
 
@@ -60,7 +58,8 @@
       type='text' 
       name='price'
       placeholder='Digite o preço'
-      value='{{product.price}}'>
+      value='{{product.price}}'
+      onkeydown="Mask.apply(this, 'formatBRL')">
   </div>
 
   {% if product.old_price %}
