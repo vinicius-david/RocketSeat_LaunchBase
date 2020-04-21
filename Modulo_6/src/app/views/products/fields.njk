@@ -29,7 +29,7 @@
       type='text' 
       name='name'
       placeholder='Digite o título do anúncio' 
-      value='{{product.nome}}'>
+      value='{{product.name}}'>
   </div>
 
 </div>
@@ -83,7 +83,7 @@
 
 </div>
 
-{% if product.status %}
+{% if product.status == '1' or product.status == 0 %}
 
   <div class='item'>
 

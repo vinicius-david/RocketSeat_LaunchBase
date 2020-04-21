@@ -58,6 +58,26 @@ body {
   cursor: pointer;
 }
 
+.button.edit {
+  background-color: rgb(68, 126, 76);
+}
+
+.button.edit:hover {
+  background-color: rgb(28, 102, 25);
+  transition: 400ms;
+  cursor: pointer;
+}
+
+.button.delete {
+  background-color: rgb(170, 71, 71);
+}
+
+.button.delete:hover {
+  background-color: rgb(173, 25, 25);
+  transition: 400ms;
+  cursor: pointer;
+}
+
 /* HEADER E FOOTER */
 
 header, footer {
@@ -163,6 +183,10 @@ section.form .header h3 {
   margin-bottom: 14px;
 }
 
+form .fields {
+  margin-bottom: 64px;
+}
+
 form .item {
   margin-bottom: 16px;
 }
@@ -207,6 +231,15 @@ form .item textarea {
   min-height: 150px;
 }
 
-form .fields {
-  margin-bottom: 64px;
+form .item span {
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
+
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-right: 4px;
 }
