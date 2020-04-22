@@ -46,7 +46,29 @@
 
 </div>
 
-{# CAMPO DE FOTOS #}
+<div class='item'>
+
+  <div>Imagens</div>
+  
+  <div id='photos-upload'>
+
+    <input 
+      id='photos-input'
+      type='file' 
+      name='photos' 
+      multiple
+      accept='image/*'
+      onchange='PhotosUpload.handleFileInput(event)'>
+
+    <p>Escolha até 6 imagens</p>
+
+  </div>
+
+  <div id='photos-preview'>
+    
+  </div>
+
+</div>
 
 <div class='item'>
 
