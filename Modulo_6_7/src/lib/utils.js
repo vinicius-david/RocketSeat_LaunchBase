@@ -1,34 +1,38 @@
 module.exports = {
-  calcularIdade(timestamp) {
+  age(timestamp) {
 
-    const hoje = new Date()
-    const nascimento = new Date(timestamp)
+    const today = new Date()
+    const birth = new Date(timestamp)
   
-    let idade = hoje.getFullYear() - nascimento.getFullYear()
-    const mes = hoje.getMonth() - nascimento.getMonth()
+    let age = today.getFullYear() - birth.getFullYear()
+    const month = today.getMonth() - birth.getMonth()
   
-    if (mes < 0 || (mes == 0 && hoje.getDate() <= nascimento.getDate()) ) {
-      idade = idade -1
+    if (month < 0 || (month == 0 && today.getDate() <= birth.getDate()) ) {
+      age = age -1
     }
   
-    return idade
+    return age
   },
 
-  calcularData(timestamp){
+  date(timestamp){
 
-    const data = new Date(timestamp)
+    const date = new Date(timestamp)
 
-    const ano = data.getUTCFullYear()
-    const mes = `0${data.getUTCMonth() + 1}`.slice(-2)
-    const dia = `0${data.getUTCDate()}`.slice(-2)
+    const year = date.getFullYear()
+    const month = `0${date.getMonth() + 1}`.slice(-2)
+    const day = `0${date.getDate()}`.slice(-2)
+    const hour = date.getHours()
+    const minutes = date.getMinutes()
 
     return {
-      dia,
-      mes,
-      ano,
-      iso: `${ano}-${mes}-${dia}`,
-      diaNascimento: `${dia}/${mes}`,
-      format: `${dia}-${mes}-${ano}`
+      day,
+      month,
+      year,
+      hour,
+      minutes,
+      iso: `${year}-${month}-${day}`,
+      daybirth: `${day}/${month}`,
+      format: `${day}-${month}-${year}`
     }
 
   },
