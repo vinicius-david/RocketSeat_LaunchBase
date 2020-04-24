@@ -9,6 +9,14 @@
 
 /* LAYOUT --------------------------------------------------------------------*/
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+}
+
 header {
   text-align: center;
   margin-top: 36px;
@@ -43,7 +51,7 @@ footer {
   background-color: #EEEEEE;
   color: #999999;
 
-  margin-top: 50px;
+  margin-top: auto;
   padding-top: 23px;
   padding-bottom: 23px;
 }
@@ -79,10 +87,10 @@ footer h1 {
 
 .card .card-text h1 {
   font-size: 32px;
-  text-align: justify;
+  text-align: left;
   color: #111111;
 
-  width: 305px;
+  width: 316px;
   line-height: 38px;
   margin: 0 auto;
 }
@@ -101,6 +109,7 @@ footer h1 {
   width: 940px;
   margin: 0 auto;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .popular h1 {
@@ -159,6 +168,10 @@ footer h1 {
   margin-bottom: 30px;
 }
 
+.about h3:last-child {
+  margin-bottom: 50px;
+}
+
 /* RECIPES ------------------------------------------------------------------ */
 
 .all-recipes {
@@ -198,4 +211,55 @@ footer h1 {
   font-size: 14px;
   color: #777777;
   margin-top: 5px;
+}
+
+/* SHOW ----------------------------------------------------------------------*/
+
+.show-content {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.show-content .image img {
+  border-radius: 15px;
+}
+
+.show-content .title {
+  margin-top: 50px;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.show-content .author {
+  font-size: 20px;
+  color: #777777;
+
+  text-align: center;
+}
+
+.show-content .ingredients h1,
+.show-content .preparation h1,
+.show-content .information h1 {
+  margin-top: 50px;
+  font-size: 24px;
+}
+
+.show-content .ingredients-text,
+.show-content .preparation-text,
+.show-content .information-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #444444;
+}
+
+.show-content .ingredients-text ul {
+  margin-left: 20px;
+}
+
+.show-content .preparation-text ul {
+  list-style-type: decimal;
+  margin-left: 20px;
 }
