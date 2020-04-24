@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Roboto';
+}
+
+/* HEADER ------------------------------------------------------------------- */
+
+header {
+  background-color: black;
+}
+
+header .admin-header-links {
+  padding: 27px 0px;
+  margin: 0 auto;
+  width: 940px;
+  
+  display: flex;
+  align-items: center;
+}
+
+/* RECIPES -------------------------------------------------------------------*/
+
+.recipes-title {
+  width: 940px;
+  margin: 0 auto;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  margin-top: 50px;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-recipes {
+  width: 940px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.all-recipes .recipes {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-gap: 8px;
+
+  margin-top: 20px;
+}
+
+.all-recipes .recipes img {
+  width: 172px;
+  height: 80px;
+
+  border-radius: 9px;
+}
+
+.all-recipes .recipes .recipe-info h2 {
+  font-size: 18px;
+}
+
+.all-recipes .recipes .recipe-info h3 {
+  font-size: 14px;
+  color: #777777;
+
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.all-recipes .recipes .recipe-info a {
+  text-decoration: none;
+}
+
+/* SHOW ----------------------------------------------------------------------*/
+
+.recipes-title button {
+  background-color: #6558C3;
+  color: white;
+
+  padding: 9px 20px;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.show-content {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.show-content .image img {
+  margin-top: 10px;
+  border-radius: 15px;
+}
+
+.show-content .title {
+  margin-top: 50px;
+  
+  font-size: 32px;
+  font-weight: 700;
+  
+  text-align: center;
+}
+
+.show-content .author {
+  font-size: 20px;
+  color: #777777;
+  
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.show-content .ingredients h1,
+.show-content .preparation h1,
+.show-content .information h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.show-content .ingredients-text,
+.show-content .preparation-text,
+.show-content .information-text {
+  margin-bottom: 50px;
+  font-size: 18px;
+  color: #444444;
+}
+
+.show-content .ingredients-text ul {
+  margin-left: 20px;
+}
+
+.show-content .preparation-text ul {
+  margin-left: 20px;
+}
+
+.show-content .information-text {
+  margin-bottom: 50px;
+}

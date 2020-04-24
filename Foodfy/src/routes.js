@@ -1,13 +1,15 @@
 const express = require('express');
 const routes = express.Router();
 
-const Recipes = require('./app/controllers/recipes')
+const Foodfy = require('./app/controllers/foodfy')
+const Admin = require('./app/controllers/admin')
 
-routes.get('/', Recipes.listMain)
-routes.get('/about', function(req, res) {
-  return res.render('about.njk')
-})
-routes.get('/recipes', Recipes.listAll)
-routes.get('/recipes/:id', Recipes.show)
+routes.get('/', Foodfy.index)
+routes.get('/about', Foodfy.about)
+routes.get('/recipes', Foodfy.recipes)
+routes.get('/recipes/:id', Foodfy.show)
+
+routes.get('/admin/recipes', Admin.recipes)
+routes.get('/admin/recipes/:id', Admin.show)
 
 module.exports = routes

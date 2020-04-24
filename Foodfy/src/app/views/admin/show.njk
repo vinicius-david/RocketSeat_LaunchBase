@@ -1,0 +1,74 @@
+{% extends 'admin/layout.njk' %}
+
+{% block content %}
+
+<div class='recipes-title'>
+
+  Receita: {{recipe.title}}
+
+  <button>Editar receita</button>
+
+</div>
+
+<div class='show-content'>
+
+  <div class='image'>
+    <img src='{{recipe.image}}'>
+  </div>
+
+  <div class='title'>
+    {{recipe.title}}
+  </div>
+
+  <div class='author'>
+    por {{recipe.author}}
+  </div>
+
+
+  <div class='ingredients'>
+
+    <div class='ingredients-head'>
+      <h1>Ingredientes</h1>
+    </div>
+
+    <div class='ingredients-text show-hide'>
+      <ul>
+       {% for ingredient in recipe.ingredients %}
+        <li>{{ingredient}}</li>
+        {% endfor %}
+      </ul> 
+    
+    </div>
+  </div>
+
+
+  <div class='preparation'>
+
+    <div class='preparation-head'>
+      <h1>Modo de preparo</h1>
+    </div>
+
+    <div class='preparation-text show-hide'>
+      <ul>
+       {% for preparation in recipe.preparation %}
+        <li>{{preparation}}</li>
+        {% endfor %}
+      </ul> 
+    </div>
+  </div>
+
+
+  <div class='information'>
+
+    <div class='information-head'>
+      <h1>Informações adicionais</h1>
+    </div>
+
+    <div class='information-text show-hide'>
+      {{recipe.information | striptags(true) | escape | nl2br}}
+    </div>
+  </div>
+
+</div>
+
+{% endblock content %}
