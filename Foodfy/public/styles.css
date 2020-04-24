@@ -226,31 +226,32 @@ footer h1 {
 
 .show-content .title {
   margin-top: 50px;
-
+  
   font-size: 32px;
   font-weight: 700;
-
+  
   text-align: center;
 }
 
 .show-content .author {
   font-size: 20px;
   color: #777777;
-
+  
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .show-content .ingredients h1,
 .show-content .preparation h1,
 .show-content .information h1 {
-  margin-top: 50px;
   font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .show-content .ingredients-text,
 .show-content .preparation-text,
 .show-content .information-text {
-  margin-top: 20px;
+  margin-bottom: 50px;
   font-size: 18px;
   color: #444444;
 }
@@ -262,4 +263,42 @@ footer h1 {
 .show-content .preparation-text ul {
   list-style-type: decimal;
   margin-left: 20px;
+}
+
+.show-content .information-text {
+  margin-bottom: 50px;
+}
+
+/* BUTTON SHOW-HIDE --------------------------------------------------------- */
+
+.ingredients-head,
+.preparation-head,
+.information-head {
+  display: flex;
+  align-items: center;
+}
+
+.ingredients-head h1,
+.preparation-head h1,
+.information-head h1 {
+  margin-right: 8px;
+}
+
+.ingredients-head button,
+.preparation-head button,
+.information-head button {
+  text-transform: uppercase;
+  color: #999999;
+  background-color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+
+.hide {
+  display: none;
 }

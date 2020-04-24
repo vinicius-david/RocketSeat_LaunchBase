@@ -16,11 +16,15 @@
     por {{recipe.author}}
   </div>
 
+
   <div class='ingredients'>
 
-    <h1>Ingredientes</h1>
+    <div class='ingredients-head'>
+      <h1>Ingredientes</h1>
+      <button class='visibility'>Esconder</button>
+    </div>
 
-    <div class='ingredients-text'>
+    <div class='ingredients-text show-hide'>
       <ul>
        {% for ingredient in recipe.ingredients %}
         <li>{{ingredient}}</li>
@@ -30,11 +34,15 @@
     </div>
   </div>
 
+
   <div class='preparation'>
 
-    <h1>Modo de preparo</h1>
+    <div class='preparation-head'>
+      <h1>Modo de preparo</h1>
+      <button class='visibility'>Esconder</button>
+    </div>
 
-    <div class='preparation-text'>
+    <div class='preparation-text show-hide'>
       <ul>
        {% for preparation in recipe.preparation %}
         <li>{{preparation}}</li>
@@ -43,10 +51,16 @@
     </div>
   </div>
 
+
   <div class='information'>
-    <h1>Informações</h1>
-    <div class='information-text'>
-    {{recipe.information}}
+
+    <div class='information-head'>
+      <h1>Informações adicionais</h1>
+      <button class='visibility'>Esconder</button>
+    </div>
+
+    <div class='information-text show-hide'>
+      {{recipe.information | striptags(true) | escape | nl2br}}
     </div>
   </div>
 
