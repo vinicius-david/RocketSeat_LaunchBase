@@ -57,8 +57,52 @@ module.exports = {
       ...findRecipe
     }
 
-    console.log(recipe)
-
     return res.render('admin/edit', { recipe })
+  },
+  put(req, res) {
+
+    const { id } = req.body
+    let index = 0
+
+    const findRecipe = data.recipes.find(function(recipe, findIndex) {
+      if (id == recipe.id) {
+        index = findIndex
+        return true
+      }
+    })
+
+    console.log(req.body)
+    
+    if (!findRecipe) return res.send('Receita não encontrada.')
+
+    recipe = {
+      ...findRecipe,
+      ...req.body,
+      id: Number(req.body.id)
+    }
+
+    data.recipes[index] = recipe
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
+      if(err) return res.send('Erro ao salvar.')
+
+      return res.redirect(`/admin/recipes/${id}`)
+  })
+
+  },
+  delete(req, res) {
+    const { id } = req.body
+
+    const recipeFilter = data.recipes.filter(function(recipe) {
+      return recipe.id != id
+    })
+  
+    data.recipes = recipeFilter
+  
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
+      
+      if (err) return res.send('Erro ao deletar.')
+      return res.redirect('/admin/recipes')
+    })
   }
 }

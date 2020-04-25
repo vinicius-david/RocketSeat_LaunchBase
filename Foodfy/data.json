@@ -141,33 +141,20 @@
     },
     {
       "id": 7,
-      "title": "Teste",
-      "author": "Teste",
-      "image_url": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/doce.png",
+      "title": "sadsdsaa",
+      "author": "assdsadas",
+      "image_url": "sadasdasas",
       "ingredients": [
-        "Teste"
+        "dadsadsad",
+        "adsasasdasa",
+        "asdsadasdsa dasasdasd"
       ],
       "preparation": [
-        "Teste"
+        "sadsadsadsa sadasasa",
+        "dasdas adasasd",
+        "sdadassa dasadsaasd"
       ],
-      "information": "Teste"
-    },
-    {
-      "id": 8,
-      "title": "sadasda",
-      "author": "asdasds",
-      "image_url": "https://source.unsplash.com/140489",
-      "ingredients": [
-        "asdsadasd",
-        "asdsadasd",
-        ""
-      ],
-      "preparation": [
-        "sadasd",
-        "sadasd",
-        ""
-      ],
-      "information": "sadasdsa"
+      "information": ""
     }
   ]
 }

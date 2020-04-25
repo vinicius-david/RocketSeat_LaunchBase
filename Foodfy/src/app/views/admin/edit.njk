@@ -2,23 +2,46 @@
 
 {% block content %}
 
-<div class='recipes-title'>
+<div class='recipes-edit'>
 
-  <div>
+  <div class='edit-content'>
 
-    Editando receita
+    <div class='top-line'>
 
-  </div>
+    <div class='edit-title'>
 
-  <div class='buttons'>
+      Editando receita
 
-    <button>Salvar receita</button>
-    <button class='delete-button'>Deletar</button>
+    </div>
+
+    <form method='POST' action='/admin/recipes/:id/edit?_method=DELETE'>
+
+      <div class='buttons'>
+
+        <button class='delete-button'>Deletar</button>
+        <input type='hidden' name='id' value={{recipe.id}}>
+
+      </div>
+
+    </form>
+
+    <form method='POST' action='/admin/recipes/:id/edit?_method=PUT'>
+
+      <div class='buttons'>
+
+        <button>Salvar receita</button>
+        <input type='hidden' name='id' value={{recipe.id}}>
+
+      </div>
+
+      {% include 'admin/fields.njk' %}
+      
+      </div>
+
+    </form>
 
   </div>
 
 </div>
-
-{% include 'admin/fields.njk' %}
 
 {% endblock content %}

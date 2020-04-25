@@ -162,11 +162,14 @@ header .admin-header-links {
 .fields input,
 .fields textarea {
   height: 50px;
-  width: 100%;
+  width: 940px;
   margin-top: 10px;
 
   border: 1px solid #dddddd;
   border-radius: 4px;
+
+  display: block;
+  box-sizing: border-box;
 
   font-size: 16px;
   padding: 0px 8px;
@@ -195,6 +198,39 @@ header .admin-header-links {
 
 /* EDIT RECIPES --------------------------------------------------------------*/
 
-.recipes-title .delete-button {
+.recipes-edit {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.recipes-edit .top-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.recipes-edit .edit-content {
+
+  margin-top: 55px;
+}
+
+.recipes-edit .edit-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.recipes-edit .edit-content .buttons button {
+  background-color: #6558C3;
+  color: white;
+
+  padding: 9px 20px;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.recipes-edit .edit-content .buttons .delete-button {
   background-color: #DC4747;
 }
