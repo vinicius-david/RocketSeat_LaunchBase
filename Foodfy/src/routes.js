@@ -10,6 +10,9 @@ routes.get('/recipes', Foodfy.recipes)
 routes.get('/recipes/:id', Foodfy.show)
 
 routes.get('/admin/recipes', Admin.recipes)
+routes.get('/admin/recipes/create', Admin.create)
 routes.get('/admin/recipes/:id', Admin.show)
+routes.get('/admin/recipes/:id/edit', Admin.edit)
+routes.post('/admin/recipes/create', Admin.post)
 
 module.exports = routes

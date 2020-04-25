@@ -6,14 +6,14 @@
 
   Receita: {{recipe.title}}
 
-  <button>Editar receita</button>
+  <a href='/admin/recipes/{{recipe.id}}/edit'><button>Editar receita</button></a>
 
 </div>
 
 <div class='show-content'>
 
   <div class='image'>
-    <img src='{{recipe.image}}'>
+    <img src='{{recipe.image_url}}'>
   </div>
 
   <div class='title'>

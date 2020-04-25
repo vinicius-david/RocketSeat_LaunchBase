@@ -144,3 +144,57 @@ header .admin-header-links {
 .show-content .information-text {
   margin-bottom: 50px;
 }
+
+/* FIELDS --------------------------------------------------------------------*/
+
+.fields {
+  width: 940px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.fields .image-field {
+  margin-top: 20px;
+}
+
+.fields input,
+.fields textarea {
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+
+  font-size: 16px;
+  padding: 0px 8px;
+}
+
+.fields textarea {
+  height: 250px;
+  margin-bottom: 50px;
+
+  padding-top: 12px;
+}
+
+.fields p {
+  margin-top: 30px;
+
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.fields button {
+  margin-top: 15px;
+  background-color: white;
+  color: blue;
+}
+
+/* EDIT RECIPES --------------------------------------------------------------*/
+
+.recipes-title .delete-button {
+  background-color: #DC4747;
+}

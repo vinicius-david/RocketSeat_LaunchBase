@@ -1,0 +1,24 @@
+{% extends 'admin/layout.njk' %}
+
+{% block content %}
+
+<div class='recipes-title'>
+
+  <div>
+
+    Editando receita
+
+  </div>
+
+  <div class='buttons'>
+
+    <button>Salvar receita</button>
+    <button class='delete-button'>Deletar</button>
+
+  </div>
+
+</div>
+
+{% include 'admin/fields.njk' %}
+
+{% endblock content %}
