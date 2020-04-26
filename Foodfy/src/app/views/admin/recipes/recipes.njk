@@ -1,4 +1,4 @@
-{% extends 'admin/recipes/layout.njk' %}
+{% extends 'admin/layout.njk' %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
     <div class='recipes'>
 
       <div class='recipe-img'>
-        <a><img src={{recipe.image_url}} alt={{recipe.title}}></a>
+        <a><img src={{recipe.image}} alt={{recipe.title}}></a>
       </div>
 
       <div class='recipe-info'>

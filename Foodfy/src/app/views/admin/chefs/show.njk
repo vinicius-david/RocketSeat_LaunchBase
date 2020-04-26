@@ -1,4 +1,4 @@
-{% extends 'admin/chefs/layout.njk' %}
+{% extends 'admin/layout.njk' %}
 
 {% block content %}
 
@@ -10,18 +10,27 @@
 
 </div>
 
-<div class='show-content'>
+<div class='show-chef-content'>
 
-  <div class='image'>
+  <div class='chef-image'>
     <img src='{{chef.avatar_url}}'>
   </div>
 
-  <div class='title'>
+  <div class='chef-title'>
     {{chef.name}}
   </div>
 
-  <div class='author'>
+  <div class='chef-n-recipes'>
     receitas
+  </div>
+
+</div>
+
+<div class='chef-recipes'>
+
+  <h2>Receitas</h2>
+
+  <div class='chef-recipe'>
   </div>
 
 </div>

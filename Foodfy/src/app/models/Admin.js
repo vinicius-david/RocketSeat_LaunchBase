@@ -56,7 +56,7 @@ module.exports = {
     `
 
     const values = [
-      data.chef_id,
+      data.chef_id || 1,
       data.image,
       data.title,
       data.ingredients,

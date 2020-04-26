@@ -10,6 +10,10 @@ routes.get('/about', Foodfy.about)
 routes.get('/recipes', Foodfy.recipes)
 routes.get('/recipes/:id', Foodfy.show)
 
+routes.get('/admin', function(req, res) {
+  return res.render('admin/index')
+})
+
 routes.get('/admin/recipes', Admin.recipes)
 routes.get('/admin/recipes/create', Admin.create)
 routes.get('/admin/recipes/:id', Admin.show)
