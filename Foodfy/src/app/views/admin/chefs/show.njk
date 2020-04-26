@@ -1,0 +1,29 @@
+{% extends 'admin/chefs/layout.njk' %}
+
+{% block content %}
+
+<div class='recipes-title'>
+
+  Chef: {{chef.name}}
+
+  <a href='/admin/chefs/{{chef.id}}/edit'><button>Editar chef</button></a>
+
+</div>
+
+<div class='show-content'>
+
+  <div class='image'>
+    <img src='{{chef.avatar_url}}'>
+  </div>
+
+  <div class='title'>
+    {{chef.name}}
+  </div>
+
+  <div class='author'>
+    receitas
+  </div>
+
+</div>
+
+{% endblock content %}

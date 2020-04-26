@@ -1,0 +1,45 @@
+{% extends 'admin/chefs/layout.njk' %}
+
+{% block content %}
+
+<div class='recipes-edit'>
+
+  <div class='top-line'>
+
+    <h3>
+    Editando chef
+    </h3>
+
+    <div class='forms'>
+
+      <form method='POST' action='/admin/chefs/:id/edit?_method=DELETE'>
+
+        <button class='button' id='delete-button'>Deletar</button>
+        <input type='hidden' name='id' value={{chef.id}}>
+
+      </form>
+
+    </div>
+
+  
+
+    <form method='POST' action='/admin/chefs/:id/edit?_method=PUT'>
+
+        <div class='forms'>
+          <button class='button'>Salvar chef</button>
+        </div>
+
+           
+        <input type='hidden' name='id' value={{chef.id}}>
+
+  </div>
+
+     {% include 'admin/chefs/fields.njk' %}
+
+     <div></div>
+
+    </form>
+
+</div>
+
+{% endblock content %}
