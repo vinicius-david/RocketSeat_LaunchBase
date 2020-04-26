@@ -1,108 +1,58 @@
 const data = require('../../../data.json')
+const Admin = require('../models/Admin')
 const fs = require('fs')
 
 module.exports = {
-  recipes(req, res) {
+  async recipes(req, res) {
 
-    return res.render('admin/recipes', { recipes: data.recipes })
+    let results = await Admin.all()
+    const recipes = results.rows
+
+    return res.render('admin/recipes/recipes', { recipes })
+
   },
   create(req, res) {
-    return res.render('admin/create')
+    return res.render('admin/recipes/create')
   },
   post(req, res) {
 
-    let { title, author, image_url, ingredients, preparation, information } = req.body
-
-    let id = Number(data.recipes.length + 1)
-
-    data.recipes.push({
-      id,
-      title,
-      author,
-      image_url,
-      ingredients,
-      preparation,
-      information
-    })
-
-    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
-
-      if (err) return res.send('Erro ao salvar dados.')
-
-      return res.redirect(`/admin/recipes/${id}`)
+    Admin.create(req.body, function(recipe) {
+      return res.redirect(`/admin/recipes/${recipe.id}`)
     })
 
   },
   show(req, res) {
 
-    const { id } = req.params
+    Admin.find(req.params.id, function(recipe) {
+      if (!recipe) return res.send('Receita não encontrada')
 
-    const recipe = data.recipes[id - 1]
+      return res.render('admin/recipes/show', { recipe })
+    })
 
-    if (!recipe) return res.send('Receita não encontrada.')
-
-    return res.render('admin/show', { recipe })
+    return
   },
   edit(req, res) {
 
-    let { id } = req.params
+    Admin.find(req.params.id, function(recipe) {
+      if (!recipe) return res.send('Receita não encontrada')
 
-    const findRecipe = data.recipes.find(function(recipe) {
-      return id == recipe.id
+      return res.render('admin/recipes/edit', { recipe })
     })
 
-    if (!findRecipe) return res.send('Receita não encontrada.')
-
-    const recipe = {
-      ...findRecipe
-    }
-
-    return res.render('admin/edit', { recipe })
+    return
   },
   put(req, res) {
-
-    const { id } = req.body
-    let index = 0
-
-    const findRecipe = data.recipes.find(function(recipe, findIndex) {
-      if (id == recipe.id) {
-        index = findIndex
-        return true
-      }
+  
+    Admin.update(req.body, function() {
+      return res.redirect(`/admin/recipes/${req.body.id}`)
     })
-
-    console.log(req.body)
-    
-    if (!findRecipe) return res.send('Receita não encontrada.')
-
-    recipe = {
-      ...findRecipe,
-      ...req.body,
-      id: Number(req.body.id)
-    }
-
-    data.recipes[index] = recipe
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
-      if(err) return res.send('Erro ao salvar.')
-
-      return res.redirect(`/admin/recipes/${id}`)
-  })
 
   },
   delete(req, res) {
-    const { id } = req.body
 
-    const recipeFilter = data.recipes.filter(function(recipe) {
-      return recipe.id != id
-    })
-  
-    data.recipes = recipeFilter
-  
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
-      
-      if (err) return res.send('Erro ao deletar.')
+    Admin.delete(req.body.id, function() {
       return res.redirect('/admin/recipes')
     })
+    return
   }
 }

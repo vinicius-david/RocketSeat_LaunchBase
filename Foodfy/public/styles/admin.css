@@ -204,22 +204,18 @@ header .admin-header-links {
 }
 
 .recipes-edit .top-line {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.recipes-edit .edit-content {
-
   margin-top: 55px;
+  display: grid;
+  grid-template-columns: 1fr 90px 132px;
+  grid-gap: 10px;
 }
 
-.recipes-edit .edit-title {
+.recipes-edit .top-line h3 {
   font-size: 24px;
   font-weight: 700;
 }
 
-.recipes-edit .edit-content .buttons button {
+.recipes-edit .forms button {
   background-color: #6558C3;
   color: white;
 
@@ -231,6 +227,6 @@ header .admin-header-links {
   letter-spacing: 0.4px;
 }
 
-.recipes-edit .edit-content .buttons .delete-button {
+.recipes-edit .top-line #delete-button {
   background-color: #DC4747;
 }

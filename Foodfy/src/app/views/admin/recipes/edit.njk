@@ -1,0 +1,45 @@
+{% extends 'admin/recipes/layout.njk' %}
+
+{% block content %}
+
+<div class='recipes-edit'>
+
+  <div class='top-line'>
+
+    <h3>
+    Editando receita
+    </h3>
+
+    <div class='forms'>
+
+      <form method='POST' action='/admin/recipes/:id/edit?_method=DELETE'>
+
+        <button class='button' id='delete-button'>Deletar</button>
+        <input type='hidden' name='id' value={{recipe.id}}>
+
+      </form>
+
+    </div>
+
+  
+
+    <form method='POST' action='/admin/recipes/:id/edit?_method=PUT'>
+
+        <div class='forms'>
+          <button class='button'>Salvar receita</button>
+        </div>
+
+           
+        <input type='hidden' name='id' value={{recipe.id}}>
+
+  </div>
+
+     {% include 'admin/recipes/fields.njk' %}
+
+     <div></div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

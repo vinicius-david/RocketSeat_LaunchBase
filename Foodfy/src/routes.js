@@ -13,6 +13,7 @@ routes.get('/admin/recipes', Admin.recipes)
 routes.get('/admin/recipes/create', Admin.create)
 routes.get('/admin/recipes/:id', Admin.show)
 routes.get('/admin/recipes/:id/edit', Admin.edit)
+
 routes.post('/admin/recipes/create', Admin.post)
 routes.put('/admin/recipes/:id/edit', Admin.put)
 routes.delete('/admin/recipes/:id/edit', Admin.delete)

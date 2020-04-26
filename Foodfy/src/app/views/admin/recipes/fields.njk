@@ -25,11 +25,17 @@
   
     <p>Ingredientes</p>
 
+    <div>
+
+      {% for ingredient in recipe.ingredients %}
+        <input name='ingredients' type='text' value='{{ingredient}}'>
+      {% endfor %}
+
+    </div>
+
     <div class='ingredient'>
 
-    {% for ingredient in recipe.ingredients %}
       <input name='ingredients[]' type='text' value='{{ingredient}}'>
-    {% endfor %}
 
     </div>
   
@@ -43,11 +49,17 @@
   
     <p>Modo de preparo</p>
 
+    <div>
+
+      {% for preparation in recipe.preparation %}
+        <input name='preparation[]' type='text' value='{{preparation}}'>
+      {% endfor %}
+
+    </div>
+
     <div  class='preparation'>
 
-    {% for preparation in recipe.preparation %}
       <input name='preparation[]' type='text' value='{{preparation}}'>
-    {% endfor %}
     
     </div>
   
@@ -60,7 +72,7 @@
   <div>
   
     <p>Informações adicionais</p>
-    <textarea name='information'></textarea>
+    <textarea name='information'>{{recipe.information}}</textarea>
   
   </div>
 
