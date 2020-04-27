@@ -1,4 +1,5 @@
 const Chef = require('../models/Chef')
+const Recipe = require('../models/Recipe')
 
 module.exports = {
   async list(req, res) {
@@ -21,13 +22,25 @@ module.exports = {
   },
   show(req, res) {
 
+    // Chef.find(req.params.id, function(chef) {
+
+    //   if (!chef) return res.send('Chef não encontrado.')
+
+    //     return res.render('admin/chefs/show', { chef })
+
+    // })
+
     Chef.find(req.params.id, function(chef) {
       if (!chef) return res.send('Chef não encontrado.')
-
-      return res.render('admin/chefs/show', { chef })
+      Recipe.findAllChefsRecipes(req.params.id, function(recipes) {
+        
+        return res.render('admin/chefs/show', { chef, recipes })
+      })
+      return
     })
 
-    return
+    return 
+
   },
   edit(req, res) {
 

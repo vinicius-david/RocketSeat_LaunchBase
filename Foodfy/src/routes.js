@@ -1,35 +1,35 @@
 const express = require('express');
 const routes = express.Router();
 
-const Foodfy = require('./app/controllers/foodfy')
-const Admin = require('./app/controllers/admin')
-const Chef = require('./app/controllers/chefs')
+const foodfy = require('./app/controllers/foodfy')
+const recipes = require('./app/controllers/recipes')
+const chefs = require('./app/controllers/chefs')
 
-routes.get('/', Foodfy.index)
-routes.get('/about', Foodfy.about)
-routes.get('/recipes', Foodfy.recipes)
-routes.get('/recipes/:id', Foodfy.show)
+routes.get('/', foodfy.index)
+routes.get('/about', foodfy.about)
+routes.get('/recipes', foodfy.recipes)
+routes.get('/recipes/:id', foodfy.show)
 
 routes.get('/admin', function(req, res) {
   return res.render('admin/index')
 })
 
-routes.get('/admin/recipes', Admin.recipes)
-routes.get('/admin/recipes/create', Admin.create)
-routes.get('/admin/recipes/:id', Admin.show)
-routes.get('/admin/recipes/:id/edit', Admin.edit)
+routes.get('/admin/recipes', recipes.list)
+routes.get('/admin/recipes/create', recipes.create)
+routes.get('/admin/recipes/:id', recipes.show)
+routes.get('/admin/recipes/:id/edit', recipes.edit)
 
-routes.post('/admin/recipes/create', Admin.post)
-routes.put('/admin/recipes/:id/edit', Admin.put)
-routes.delete('/admin/recipes/:id/edit', Admin.delete)
+routes.post('/admin/recipes/create', recipes.post)
+routes.put('/admin/recipes/:id/edit', recipes.put)
+routes.delete('/admin/recipes/:id/edit', recipes.delete)
 
-routes.get('/admin/chefs', Chef.list)
-routes.get('/admin/chefs/create', Chef.create)
-routes.get('/admin/chefs/:id', Chef.show)
-routes.get('/admin/chefs/:id/edit', Chef.edit)
+routes.get('/admin/chefs', chefs.list)
+routes.get('/admin/chefs/create', chefs.create)
+routes.get('/admin/chefs/:id', chefs.show)
+routes.get('/admin/chefs/:id/edit', chefs.edit)
 
-routes.post('/admin/chefs/create', Chef.post)
-routes.put('/admin/chefs/:id/edit', Chef.put)
-routes.delete('/admin/chefs/:id/edit', Chef.delete)
+routes.post('/admin/chefs/create', chefs.post)
+routes.put('/admin/chefs/:id/edit', chefs.put)
+routes.delete('/admin/chefs/:id/edit', chefs.delete)
 
 module.exports = routes

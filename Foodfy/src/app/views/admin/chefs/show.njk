@@ -21,17 +21,32 @@
   </div>
 
   <div class='chef-n-recipes'>
-    receitas
+    {{chef.total_recipes}} receitas
   </div>
 
 </div>
 
+<div class='chef-recipes-title'>
+  <h2>Receitas</h2>
+</div>
+
 <div class='chef-recipes'>
 
-  <h2>Receitas</h2>
+  {% for recipe in recipes %}
 
   <div class='chef-recipe'>
+    <div class='recipe-img'>
+      <a><img src={{recipe.image}} alt={{recipe.title}}></a>
+    </div>
+
+    <div class='recipe-info'>
+      <h2>{{recipe.title}}</h2>
+      <h3>por {{recipe.chef_name}}</h3>
+      <a href='/admin/recipes/{{recipe.id}}'>Visualizar</a>
+    </div>
   </div>
+
+  {% endfor %}
 
 </div>
 

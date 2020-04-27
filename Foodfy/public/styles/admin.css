@@ -173,7 +173,8 @@ header .admin-header-links a img {
 }
 
 .fields input,
-.fields textarea {
+.fields textarea,
+.fields select {
   height: 50px;
   width: 940px;
   margin-top: 10px;
@@ -316,9 +317,45 @@ header .admin-header-links a img {
   margin-bottom: 50px;
 }
 
+.chef-recipes-title {
+  width: 940px;
+  margin: 0 auto;
+}
+
 .chef-recipes {
   width: 940px;
   margin: 0 auto;
 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
+.chef-recipes .chef-recipe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.chef-recipes .chef-recipe:last-child {
+  margin-bottom: 50px;
+}
+
+.chef-recipes .chef-recipe .recipe-img img {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+
+  margin-top: 20px;
+}
+
+.chef-recipes .chef-recipe .recipe-info h2 {
+  font-size: 18px;
+  color: #111111;
+
+  margin-top: 30px;
+}
+
+.chef-recipes .chef-recipe .recipe-info h3 {
+  font-size: 14px;
+  color: #777777;
 }

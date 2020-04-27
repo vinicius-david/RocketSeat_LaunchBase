@@ -28,12 +28,16 @@ module.exports = {
     })
   },
   find(id, callback) {
-    db.query(`SELECT chefs.* FROM chefs 
-      WHERE chefs.id = $1`, [id], function(err, results) {
-        if (err) throw `Database error. ${err}`
 
-        callback(results.rows[0])
+    db.query(`SELECT chefs.*, count(recipes) AS total_recipes 
+    FROM chefs
+    LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+    GROUP by chefs.id ORDER by chefs.id`, function(err, results) {
+      if (err) throw `Database error. ${err}`
+
+      callback(results.rows[id-1])
     })
+
   },
   update(data, callback) {
     const query = `
