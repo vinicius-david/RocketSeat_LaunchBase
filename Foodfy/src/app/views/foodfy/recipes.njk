@@ -7,9 +7,9 @@
   {% for recipe in recipes %}
 
   <div class='recipes'>
-    <a href='/recipes/{{recipe.id}}'><img src={{recipe.image_url}} alt={{recipe.title}}></a>
+    <a href='/recipes/{{recipe.id}}'><img src={{recipe.image}} alt={{recipe.title}}></a>
     <h2>{{recipe.title}}</h2>
-    <h3>por {{recipe.author}}</h3>
+    <h3>por {{recipe.chef_name}}</h3>
   </div>
 
   {% endfor %}

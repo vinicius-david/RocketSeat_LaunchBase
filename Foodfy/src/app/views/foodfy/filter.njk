@@ -1,0 +1,40 @@
+{% extends 'foodfy/layout.njk' %}
+
+{% block content %}
+
+<div class='filter-card'>
+
+  <div class='filter-title'>
+    Buscando por {{filter}}
+  </div>
+
+    <div class='recipes'>
+
+      {% for recipe in recipes %}
+
+        <div class='recipe'>
+
+          <div class='recipe-img'>
+            <a href='/recipes/{{recipe.id}}'><img src={{recipe.image}} alt={{recipe.title}}></a>
+          </div>
+
+          <div class='recipe-info'>
+            <h2>{{recipe.title}}</h2>
+            <p>por {{recipe.chef_name}}</p>
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+      {% if recipes == '' %}
+
+      <h2>Nenhuma receita encontrada</h2>
+
+      {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -6,6 +6,16 @@ module.exports = {
     return db.query(`SELECT * FROM chefs`)
 
   },
+  allTotal(callback) {
+    db.query(`SELECT chefs.*, count(recipes) AS total_recipes 
+    FROM chefs
+    LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+    GROUP by chefs.id ORDER by chefs.id`, function(err, results) {
+      if (err) throw `Database error. ${err}`
+
+      callback(results.rows)
+    })
+  },
   create(data, callback) {
 
     const query = `

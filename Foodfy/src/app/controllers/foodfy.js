@@ -1,22 +1,48 @@
-const data = require('../../../data.json')
+const Chef = require('../models/Chef')
+const Recipe = require('../models/Recipe')
 
 module.exports = {
-  index(req, res) {
-    return res.render('foodfy/index', { recipes: data.recipes })
+  async index(req, res) {
+
+    const results = await Recipe.all()
+    const recipes = results.rows
+
+    return res.render('foodfy/index', { recipes })
   },
   about(req, res) {
     return res.render('foodfy/about')
   },
-  recipes(req, res) {
-    return res.render('foodfy/recipes', { recipes: data.recipes })
+  async recipes(req, res) {
+
+    const results = await Recipe.all()
+    const recipes = results.rows
+
+    return res.render('foodfy/recipes', { recipes })
   },
   show(req, res) {
-  const { id } = req.params
 
-  const recipe = data.recipes[id - 1]
+    Recipe.find(req.params.id, function(recipe) {
+      if (!recipe) return res.send('Receita não encontrada')
 
-  if (!recipe) return res.send('Receita não encontrada.')
+      return res.render('foodfy/show', { recipe })
+    })
 
-  return res.render('foodfy/show', { recipe })
+    return
+
+  },
+  chefs(req, res) {
+
+    Chef.allTotal(function(chefs) {
+      return res.render('foodfy/chefs', { chefs })
+    })
+  },
+  filter(req, res) {
+
+    const { filter } = req.query
+
+    Recipe.findBy(filter, function(recipes) {
+      return res.render('foodfy/filter', { filter, recipes })
+    })
   }
+
 }

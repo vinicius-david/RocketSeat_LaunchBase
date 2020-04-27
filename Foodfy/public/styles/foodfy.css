@@ -24,8 +24,9 @@ header {
 }
 
 header .header-links {
-  display: flex;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
 
   width: 940px;
   margin: 0 auto;
@@ -33,7 +34,7 @@ header .header-links {
 
 header .header-links a {
   text-decoration: none;
-  margin-right: 30px;
+  margin-right: 40px;
   
   font-size: 16px;
   color: black;
@@ -45,6 +46,39 @@ header .header-links a.active {
 
 header .header-links a img {
   margin-right: 90px;
+}
+
+header .header-links .filters {
+  position: relative;
+}
+
+header .header-links .filters input {
+  border: 1px solid #dddddd;
+  width: 250px;
+  height: 12px;
+
+  font-size: 14px;
+  padding: 8px 8px;
+  margin-right: 4px;
+  margin-left: 100px;
+
+  position: relative;
+  right: 45px;
+}
+
+header .header-links .filters button {
+  background-color: #6558C3;
+
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+
+  padding: 6px 16px;
+  border-radius: 4px;
+
+  position: absolute;
+  right: 0;
 }
 
 footer {
@@ -301,4 +335,77 @@ footer h1 {
 
 .hide {
   display: none;
+}
+
+/* CHEFS LIST ----------------------------------------------------------------*/
+
+.all-chefs {
+  width: 940px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.all-chefs .chef {
+  margin-top: 30px;
+
+  display: flex;
+}
+
+.all-chefs .chef-img img {
+  width: 64px;
+  height: 64px;
+
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.all-chefs .chef-info h2 {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.all-chefs .chef-info p {
+  font-size: 14px;
+  color: #666666;
+  text-decoration: none;
+}
+
+/* FILTER --------------------------------------------------------------------*/
+
+.filter-card {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.filter-card .filter-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.filter-card .recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.filter-card .recipes img {
+  width: 300px;
+  height: 140px;
+  border-radius: 15px;
+}
+
+.filter-card .recipes h2 {
+  font-size: 18px;
+  color: #111111;
+}
+
+.filter-card .recipes p {
+  font-size: 14px;
+  color: #777777;
 }

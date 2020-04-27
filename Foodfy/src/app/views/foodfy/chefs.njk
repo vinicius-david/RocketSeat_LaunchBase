@@ -1,0 +1,26 @@
+{% extends 'foodfy/layout.njk' %}
+
+{% block content %}
+
+<div class='all-chefs'>
+
+  {% for chef in chefs %}
+
+    <div class='chef'>
+
+      <div class='chef-img'>
+        <a><img src={{chef.avatar_url}} alt={{chef.name}}></a>
+      </div>
+
+      <div class='chef-info'>
+        <h2>{{chef.name}}</h2>
+        <p>{{chef.total_recipes}} receitas</p>
+      </div>
+
+    </div>
+
+  {% endfor %}
+
+</div>
+
+{% endblock content %}
