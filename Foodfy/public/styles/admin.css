@@ -446,3 +446,43 @@ header .admin-header-links a img {
 #photos-preview .photo:hover i {
   opacity: 1;
 }
+
+/* RECIPE GALLERY ------------------------------------------------------------*/
+
+.show-content .gallery {
+  width: 100%;
+}
+
+.show-content .gallery .highlight > img {
+  width: 940px;
+  height: 280px;
+
+  border-radius: 15px;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.show-content .gallery-preview {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.show-content .gallery-preview img {
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  border-radius: 4px;
+
+  object-fit: cover;
+
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.show-content .gallery-preview img:hover,
+.show-content .gallery-preview img.active {
+  opacity: 1;
+  transition: 200ms;
+}

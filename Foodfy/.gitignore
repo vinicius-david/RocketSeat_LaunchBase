@@ -1,3 +1,4 @@
 node_modules/
 src/config/
 package-lock.json
+public/images/
