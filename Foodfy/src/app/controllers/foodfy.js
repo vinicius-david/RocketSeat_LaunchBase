@@ -19,15 +19,14 @@ module.exports = {
 
     return res.render('foodfy/recipes', { recipes })
   },
-  show(req, res) {
+  async show(req, res) {
 
-    Recipe.find(req.params.id, function(recipe) {
-      if (!recipe) return res.send('Receita não encontrada')
+    let results = await Recipe.find(req.params.id)
+    const recipe = results.rows[0]
 
-      return res.render('foodfy/show', { recipe })
-    })
+    if (!recipe) return res.send('Receita não encontrada')
 
-    return
+    return res.render('foodfy/show', { recipe })
 
   },
   chefs(req, res) {
