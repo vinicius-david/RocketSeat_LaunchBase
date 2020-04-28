@@ -2,8 +2,25 @@
 
   <div class='image-field'>
   
-    <p>Imagem da receita</p>
-    <input name='image' type='text' value='{{recipe.image}}'>
+    <p>Imagens da receita</p>
+
+    <div id='photos-card'>
+
+      <div id='photos-upload'>
+        <input 
+          id='photos-input' 
+          name='photos' 
+          type='file' 
+          multiple 
+          accept='image/*'
+          onchange="PhotosUpload.handleFileInput(event)">
+        <i class='material-icons'>add</i>
+      </div>
+
+      <div id='photos-preview'>
+      </div>
+
+    </div>
 
   </div>
 

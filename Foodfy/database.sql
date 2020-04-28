@@ -1,16 +1,16 @@
 CREATE TABLE "recipes" (
-  "id" int UNIQUE PRIMARY KEY,
+  "id" SERIAL UNIQUE PRIMARY KEY,
   "chef_id" int,
   "image" text,
   "title" text,
-  "ingredients" text,
-  "preparation" text,
+  "ingredients" text[],
+  "preparation" text[],
   "information" text,
   "created_at" timestamp DEFAULT (now())
 );
 
 CREATE TABLE "chefs" (
-  "id" int UNIQUE PRIMARY KEY,
+  "id" SERIAL UNIQUE PRIMARY KEY,
   "name" text,
   "avatar_url" text,
   "created_at" timestamp DEFAULT (now())

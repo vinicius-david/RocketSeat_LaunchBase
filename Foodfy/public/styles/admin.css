@@ -359,3 +359,90 @@ header .admin-header-links a img {
   font-size: 14px;
   color: #777777;
 }
+
+/* PHOTOS UPLOAD -------------------------------------------------------------*/
+
+.fields .image-field #photos-card {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.fields .image-field #photos-upload {
+  position: relative;
+  overflow: hidden;
+  display: block;
+
+  width: 200px;
+
+  margin-right: 8px;
+}
+
+.fields .image-field #photos-upload i {
+  padding: 55px 55px;
+  border: 1px solid #b3b3b3;
+  border-radius: 4px;
+
+  color: #808080;
+  font-size: 40px;
+}
+
+.fields .image-field #photos-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+  margin-top: 0px;
+
+  opacity: 0;
+}
+
+.fields .image-field #photos-preview {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.fields .image-field #photos-preview img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+
+  margin-right: 8px;
+}
+
+#photos-preview .photo {
+  position: relative;
+}
+
+#photos-preview .photo i {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgb(255, 255, 255, 0.8);
+
+  color: #FF0000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 40px;
+
+  opacity: 0;
+}
+
+#photos-preview .photo:hover i {
+  opacity: 1;
+}
