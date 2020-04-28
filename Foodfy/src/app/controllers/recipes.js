@@ -81,9 +81,17 @@ module.exports = {
 
     if (req.files.length != 0) {
       const newFilesPromise = req.files.map(file => 
-        File.create({...file, product_id: req.body.id}))
+        File.create({...file, recipe_id: req.body.id}))
 
-        await Promise.all(newFilesPromise)
+      const newFilesIds = await Promise.all(newFilesPromise)
+
+      for (let i = 0; i < newFilesIds.length; i++) {
+
+        File.createRelation({
+        recipe_id: req.body.id,
+        file_id: newFilesIds[i].rows[0].id
+      })
+      }
     }
 
     if (req.body.removed_files) {
