@@ -1,5 +1,6 @@
 const Chef = require('../models/Chef')
 const Recipe = require('../models/Recipe')
+const File = require('../models/File')
 
 module.exports = {
   async list(req, res) {
@@ -13,25 +14,69 @@ module.exports = {
   create(req, res) {
     return res.render('admin/chefs/create')
   },
-  post(req, res) {
+  async post(req, res) {
 
-    Chef.create(req.body, function(chef) {
-      return res.redirect(`/admin/chefs/${chef.id}`)
-    })
+    const file = req.files
+
+    const filesPromise = file.map(file => File.create({
+      name: file.filename,
+      path: `/images/${file.filename}`
+    }))
+    let fileId = await Promise.all(filesPromise)
+    
+    let values = {
+      name: req.body.name,
+      file_id: fileId[0].rows[0].id
+    }
+
+    let results = await Chef.create(values)
+    const chefId = results.rows[0].id
+    
+    return res.redirect(`/admin/chefs/${chefId}`)
 
   },
-  show(req, res) {
+  async show(req, res) {
 
-    Chef.find(req.params.id, function(chef) {
-      if (!chef) return res.send('Chef não encontrado.')
-      Recipe.findAllChefsRecipes(req.params.id, function(recipes) {
-        
-        return res.render('admin/chefs/show', { chef, recipes })
-      })
-      return
+    // get chef
+
+    let results = await Chef.find(req.params.id)
+    const chef = results.rows[0]
+
+    if (!chef) return res.send('Chef não encontrado.')
+
+    // get chef avatar
+
+    results = await Chef.file(chef.id)
+    const file = results.rows.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+    }))
+
+    // get recipes
+
+    results = await Recipe.findAllChefsRecipes(chef.id)
+    const recipes = results.rows
+
+    // get recipes images
+
+    async function getImage(recipeId) {
+      let results = await Recipe.files(recipeId)
+
+      return results[0]
+    }
+
+    const recipesPromise = recipes.map(async recipe => {
+      recipe.file = await getImage(recipe.id)
+
+      return recipe
     })
 
-    return 
+    
+    const recipesList = await Promise.all(recipesPromise)
+    
+    console.log(recipesList)
+        
+    return res.render('admin/chefs/show', { chef, recipesList, file })
 
   },
   edit(req, res) {

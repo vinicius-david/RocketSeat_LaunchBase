@@ -47,16 +47,18 @@ module.exports = {
     return db.query(query, values)
     
   },
-  findAllChefsRecipes(id, callback) {
+  findAllChefsRecipes(id) {
 
-    db.query(`SELECT recipes.*, chefs.name AS chef_name
+    const query = `SELECT recipes.*, chefs.name AS chef_name
     FROM recipes 
     LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-    WHERE chefs.id = $1`, [id], function(err, results) {
-      if (err) throw `Database error. ${err}`
-
-      callback(results.rows)
-    })
+    WHERE chefs.id = $1`
+    
+    const values = [
+      id
+    ]
+    
+    return db.query(query,values)
 
   },
   findBy(filter, callback) {
@@ -115,5 +117,14 @@ module.exports = {
       id
     ]
     return db.query(query, values)
+  },
+  allFiles() {
+
+    const query = `SELECT files.*, recipe_id, file_id
+    FROM files
+    LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+    ORDER BY id DESC`
+
+    return db.query(query)
   }
 }

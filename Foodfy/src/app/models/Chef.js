@@ -16,37 +16,36 @@ module.exports = {
       callback(results.rows)
     })
   },
-  create(data, callback) {
+  create(data) {
 
     const query = `
       INSERT INTO chefs (
         name,
-        avatar_url
+        file_id
       ) VALUES ($1, $2)
       RETURNING id
     `
 
     const values = [
       data.name,
-      data.avatar_url
+      data.file_id
     ]
 
-    db.query(query, values, function(err, results) {
-      if (err) throw `Database error. ${err}`
+    return db.query(query, values)
 
-      callback(results.rows[0])
-    })
   },
-  find(id, callback) {
+  find(id) {
 
-    db.query(`SELECT chefs.*, count(recipes) AS total_recipes 
+    const query = `SELECT chefs.*, count(recipes) AS total_recipes 
     FROM chefs
     LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
-    GROUP by chefs.id ORDER by chefs.id`, function(err, results) {
-      if (err) throw `Database error. ${err}`
+     WHERE chefs.id = $1 GROUP by chefs.id`
+     
+    const values = [
+      id
+    ]
 
-      callback(results.rows[id-1])
-    })
+    return db.query(query, values)
 
   },
   update(data, callback) {
@@ -75,5 +74,18 @@ module.exports = {
 
       return callback() 
     })
+  },
+  file(id) {
+
+    const query = `SELECT files.*, chefs.id, file_id
+    FROM files
+    LEFT JOIN chefs ON (files.id = chefs.file_id)
+    WHERE chefs.id = $1`
+
+    const values = [
+      id
+    ]
+
+    return db.query(query, values)
   }
 }

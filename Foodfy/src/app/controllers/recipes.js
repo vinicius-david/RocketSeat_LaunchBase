@@ -5,10 +5,22 @@ const File = require('../models/File')
 module.exports = {
   async list(req, res) {
 
-    let results = await Recipe.all()
-    const recipes = results.rows
+    // get recipes
 
-    return res.render('admin/recipes/recipes', { recipes })
+    let results = await Recipe.all()
+    let recipes = results.rows
+
+    // get images
+
+    results = await Recipe.allFiles()
+    let files = results.rows
+
+    files = files.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+    }))
+
+    return res.render('admin/recipes/recipes', { recipes, files })
 
   },
   async create(req, res) {

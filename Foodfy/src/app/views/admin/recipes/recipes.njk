@@ -17,7 +17,11 @@
     <div class='recipes'>
 
       <div class='recipe-img'>
-        <a><img src={{recipe.image}} alt={{recipe.title}}></a>
+
+        {% if file.recipe_id == recipe.id %}
+          <a><img src={{file.src}} alt={{file.name}}></a>
+        {% endif %}
+        
       </div>
 
       <div class='recipe-info'>

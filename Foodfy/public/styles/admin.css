@@ -486,3 +486,35 @@ header .admin-header-links a img {
   opacity: 1;
   transition: 200ms;
 }
+
+/* CHEF CREATE ---------------------------------------------------------------*/
+
+.fields .image-field #avatar-send {
+  position: relative;
+  margin-top: 18px;
+}
+
+.fields .image-field #avatar-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+
+  width: 123px;
+  height: 100%;
+  margin-top: 0px;
+
+  opacity: 0;
+  cursor: pointer;
+}
+
+.fields .image-field #avatar-send span {
+  background-color: #6558C3;
+
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
