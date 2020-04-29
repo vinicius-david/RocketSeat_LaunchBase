@@ -95,6 +95,19 @@ module.exports = {
   async put(req, res) {
     
     if (req.files.length != 0) {
+
+      // get chef
+
+      let results = await Chef.find(req.body.id)
+      const chef = results.rows[0]
+
+      // get chef avatar
+
+      results = await Chef.file(chef.id)
+      const file = results.rows.map(file => ({
+        ...file,
+        src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+      }))
   
       const newFilesPromise = req.files.map(file => File.create({
         name: file.filename,
@@ -110,41 +123,40 @@ module.exports = {
       }
       
       await Chef.update(values)
-
-
-      //  // get chef
-
-      // let results = await Chef.find(req.body.id)
-      // const chef = results.rows[0]
-
-      // // get chef avatar
-
-      // results = await Chef.file(chef.id)
-      // const file = results.rows.map(file => ({
-      //   ...file,
-      //   src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
-      // }))
       
-      // await File.delete(file[0].file_id)
+      await File.deleteChefFile(file[0].file_id)
       
     }
     
     return res.redirect(`/admin/chefs/${req.body.id}`)
   },
-  delete(req, res) {
-    
-    Chef.find(req.body.id, function(chef) {
-      
-      if (chef.total_recipes == 0) {
-        
-        Chef.delete(req.body.id, function() {
-          
-          return res.redirect('/admin/chefs')
-        })
-      } else {
+  async delete(req, res) {
 
-        return res.send('O chef não pode ser deletado pois possui receitas cadastradas.')
-      }
-    })
+    // get chef
+
+    let results = await Chef.find(req.body.id)
+    const chef = results.rows[0]
+
+    // get chef avatar
+
+    results = await Chef.file(chef.id)
+    const file = results.rows.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+    }))
+      
+    if (chef.total_recipes == 0) {
+        
+      await Chef.delete(req.body.id)
+
+      await File.deleteChefFile(file[0].file_id)
+        
+      return res.redirect('/admin/chefs')
+      
+    } else {
+
+      return res.send('O chef não pode ser deletado pois possui receitas cadastradas.')
+    }
+    
   }
 }

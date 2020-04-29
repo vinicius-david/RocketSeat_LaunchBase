@@ -24,7 +24,7 @@ routes.get('/admin/recipes/:id/edit', recipes.edit)
 
 routes.post('/admin/recipes/create', multer.array('photos', 5), recipes.post)
 routes.put('/admin/recipes/:id/edit', multer.array('photos', 5), recipes.put)
-routes.delete('/admin/recipes/:id/edit', recipes.delete)
+routes.delete('/admin/recipes/:id/edit', multer.array('photos', 5), recipes.delete)
 
 routes.get('/admin/chefs', chefs.list)
 routes.get('/admin/chefs/create', chefs.create)
@@ -33,6 +33,6 @@ routes.get('/admin/chefs/:id/edit', chefs.edit)
 
 routes.post('/admin/chefs/create', multer.array('photo', 1), chefs.post)
 routes.put('/admin/chefs/:id/edit',  multer.array('photo', 1), chefs.put)
-routes.delete('/admin/chefs/:id/edit', chefs.delete)
+routes.delete('/admin/chefs/:id/edit', multer.array('photo', 1), chefs.delete)
 
 module.exports = routes

@@ -127,11 +127,24 @@ module.exports = {
     return res.redirect(`/admin/recipes/${req.body.id}`)
 
   },
-  delete(req, res) {
+  async delete(req, res) {
 
-    Recipe.delete(req.body.id, function() {
-      return res.redirect('/admin/recipes')
-    })
-    return
+    let results = await Recipe.find(req.body.id)
+    const recipe = results.rows[0]
+
+    results = await Recipe.files(recipe.id)
+    const files = results.rows.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+    }))
+
+    for (let i = 0; i < files.length; i++) {
+      await File.delete(files[i].id)
+    }
+
+    await Recipe.delete(req.body.id)
+
+    return res.redirect('/admin/recipes')
+
   }
 }

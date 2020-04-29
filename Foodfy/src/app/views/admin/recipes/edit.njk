@@ -12,7 +12,7 @@
 
     <div class='forms'>
 
-      <form method='POST' action='/admin/recipes/:id/edit?_method=DELETE'>
+      <form method='POST' action='/admin/recipes/:id/edit?_method=DELETE' enctype='multipart/form-data'>
 
         <button class='button' id='delete-button'>Deletar</button>
         <input type='hidden' name='id' value={{recipe.id}}>

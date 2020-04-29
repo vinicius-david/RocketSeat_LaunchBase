@@ -65,12 +65,15 @@ module.exports = {
 
     return db.query(query, values)
   },
-  delete(id, callback) {
-    db.query(`DELETE FROM chefs WHERE id = $1`, [id], function(err, results) {
-      if (err) return `Database error. ${err}`
+  delete(id) {
 
-      return callback() 
-    })
+    const query = `DELETE FROM chefs WHERE id = $1`
+    
+    const values = [
+      id
+    ]
+
+    return db.query(query, values)
   },
   file(id) {
 
