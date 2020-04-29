@@ -12,7 +12,7 @@
 
     <div class='forms'>
 
-      <form method='POST' action='/admin/chefs/:id/edit?_method=DELETE'>
+      <form method='POST' action='/admin/chefs/:id/edit?_method=DELETE' enctype='multipart/form-data'>
 
         <button class='button' id='delete-button'>Deletar</button>
         <input type='hidden' name='id' value={{chef.id}}>
@@ -23,7 +23,7 @@
 
   
 
-    <form method='POST' action='/admin/chefs/:id/edit?_method=PUT'>
+    <form method='POST' action='/admin/chefs/:id/edit?_method=PUT' enctype='multipart/form-data'>
 
         <div class='forms'>
           <button class='button'>Salvar chef</button>

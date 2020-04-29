@@ -48,25 +48,22 @@ module.exports = {
     return db.query(query, values)
 
   },
-  update(data, callback) {
+  update(data) {
+
     const query = `
     UPDATE chefs SET 
       name=($1), 
-      avatar_url=($2)
+      file_id=($2)
     WHERE id = $3 
     `
 
     const values = [
       data.name,
-      data.avatar_url,
+      data.file_id,
       data.id
     ]
 
-    db.query(query, values, function(err, results) {
-      if (err) throw `Database error. ${err}`
-
-      callback()
-    })
+    return db.query(query, values)
   },
   delete(id, callback) {
     db.query(`DELETE FROM chefs WHERE id = $1`, [id], function(err, results) {
@@ -87,5 +84,13 @@ module.exports = {
     ]
 
     return db.query(query, values)
+  },
+  allFiles() {
+
+    const query = `SELECT files.*, chefs.id, file_id
+    FROM files
+    LEFT JOIN chefs ON (files.id = chefs.file_id)`
+
+    return db.query(query)
   }
 }

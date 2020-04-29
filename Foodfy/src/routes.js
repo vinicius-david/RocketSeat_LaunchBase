@@ -32,7 +32,7 @@ routes.get('/admin/chefs/:id', chefs.show)
 routes.get('/admin/chefs/:id/edit', chefs.edit)
 
 routes.post('/admin/chefs/create', multer.array('photo', 1), chefs.post)
-routes.put('/admin/chefs/:id/edit', chefs.put)
+routes.put('/admin/chefs/:id/edit',  multer.array('photo', 1), chefs.put)
 routes.delete('/admin/chefs/:id/edit', chefs.delete)
 
 module.exports = routes
