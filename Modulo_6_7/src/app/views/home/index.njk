@@ -1,0 +1,36 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+<section class='container shop'>
+
+<h2>Últimos produtos</h2>
+
+  <div class='items'>
+
+    {% for product in products %}
+
+      <div class='product'>
+
+        <div class='image'>
+          <img src={{product.img}}>
+        </div>
+
+        {% if product.oldPrice != product.price %}
+          <div class='old-price'>{{product.oldPrice}}</div>
+        {% endif %}
+
+        <p>{{product.price}}</p>
+        <h4>{{product.name}}</h4>
+
+        <a href='/products/{{product.id}}' class='button'>Ver produto</a>
+
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock content %}

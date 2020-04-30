@@ -4,21 +4,14 @@ const File = require('../models/File')
 const { formatPrice, date } = require('../../lib/utils')
 
 module.exports = {
-  create(req, res) {
+  async create(req, res) {
 
-    Category.all()
-    .then(function(results) {
+    console.log('ok')
 
-      const categories = results.rows
+    let results = await Category.all()
+    const categories = results.rows
 
-      console.log(categories)
-
-      return res.render('products/create.njk', { categories })
-    })
-    .catch(function(err) {
-
-      throw new Error(err)
-    })    
+    return res.render('products/create', { categories })
   },
   async post(req, res) {
 
