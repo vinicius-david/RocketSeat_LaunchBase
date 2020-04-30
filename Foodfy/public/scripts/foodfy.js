@@ -26,3 +26,17 @@ function esconder(index) {
 for (i = 0; i <= 2; i++) {
     esconder(i);
 }
+
+const ImageGallery = {
+  highlight: document.querySelector('.gallery .highlight > img'),
+  previews: document.querySelectorAll('.gallery-preview img'),
+  setImage(e) {
+    const { target } = e
+
+    ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
+
+    target.classList.add('active')
+
+    ImageGallery.highlight.src = target.src
+  }
+};

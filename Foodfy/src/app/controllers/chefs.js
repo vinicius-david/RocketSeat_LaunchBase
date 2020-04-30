@@ -6,13 +6,24 @@ module.exports = {
   async list(req, res) {
 
     let results = await Chef.all()
-    const chefs = results.rows
+    let chefs = results.rows
 
-    // results = await Chef.allFiles()
-    // const file = results.rows.map(file => ({
-    //   ...file,
-    //   src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
-    // }))
+    async function getImage(chefId) {
+
+      let results = await Chef.file(chefId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`)
+
+      return files[0]
+    }
+
+    const chefsPromisse = chefs.map(async chef => {
+
+      chef.img = await getImage(chef.id)
+
+      return chef
+    })
+
+    chefs = await Promise.all(chefsPromisse)
 
     return res.render('admin/chefs/chefs', { chefs })
 
@@ -46,40 +57,55 @@ module.exports = {
     // get chef
 
     let results = await Chef.find(req.params.id)
-    const chef = results.rows[0]
+    let chef = results.rows
 
     if (!chef) return res.send('Chef não encontrado.')
 
     // get chef avatar
 
-    results = await Chef.file(chef.id)
-    const file = results.rows.map(file => ({
-      ...file,
-      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
-    }))
+    async function getChefImage(chefId) {
+
+      let results = await Chef.file(chefId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`)
+
+      return files
+    }
+
+    const chefsPromise = chef.map(async chef => {
+
+      chef.img = await getChefImage(chef.id)
+
+      return chef
+    })
+    
+    chef = await Promise.all(chefsPromise)
+    chef = chef[0]
 
     // get recipes
 
     results = await Recipe.findAllChefsRecipes(chef.id)
-    const recipes = results.rows
+    let recipes = results.rows
 
     // get recipes images
 
     async function getImage(recipeId) {
-      let results = await Recipe.files(recipeId)
 
-      return results[0]
+      let results = await Recipe.files(recipeId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`)
+
+      return files[0]
     }
 
     const recipesPromise = recipes.map(async recipe => {
-      recipe.file = await getImage(recipe.id)
+
+      recipe.img = await getImage(recipe.id)
 
       return recipe
     })
     
-    const recipesList = await Promise.all(recipesPromise)
+    recipes = await Promise.all(recipesPromise)
             
-    return res.render('admin/chefs/show', { chef, recipesList, file })
+    return res.render('admin/chefs/show', { chef, recipes })
 
   },
   async edit(req, res) {

@@ -3,7 +3,10 @@ const db = require('../../config/db')
 module.exports = {
   all() {
 
-    return db.query(`SELECT * FROM chefs`)
+    return db.query(`SELECT chefs.*, count(recipes) AS total_recipes 
+    FROM chefs
+    LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+    GROUP by chefs.id`)
 
   },
   allTotal(callback) {

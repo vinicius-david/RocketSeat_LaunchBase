@@ -5,7 +5,8 @@ module.exports = {
 
     return db.query(`SELECT recipes.*, chefs.name AS chef_name
     FROM recipes 
-    LEFT JOIN chefs ON (recipes.chef_id = chefs.id)`)
+    LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+    ORDER BY created_at DESC`)
 
   },
   create(data) {
@@ -61,20 +62,16 @@ module.exports = {
     return db.query(query,values)
 
   },
-  findBy(filter, callback) {
+  findBy(filter) {
 
-    db.query(`
-    SELECT recipes.*, chefs.name AS chef_name
-    FROM recipes 
-    LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-    WHERE recipes.title ILIKE '%${filter}%'
-    `, 
-      function(err, results) {
+    const query = `SELECT recipes.*, chefs.name AS chef_name
+      FROM recipes 
+      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+      WHERE recipes.title ILIKE '%${filter}%'
+      ORDER BY updated_at DESC
+    `
 
-        if (err) throw `Database error. ${err}`
-      
-      callback(results.rows)
-  })
+    return db.query(query)
 
   },
   update(data) {

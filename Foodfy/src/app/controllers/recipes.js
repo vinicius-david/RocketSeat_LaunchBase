@@ -12,15 +12,24 @@ module.exports = {
 
     // get images
 
-    results = await Recipe.allFiles()
-    let files = results.rows
+    async function getImage(recipeId) {
 
-    files = files.map(file => ({
-      ...file,
-      src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
-    }))
+      let results = await Recipe.files(recipeId)
+      const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`)
 
-    return res.render('admin/recipes/recipes', { recipes, files })
+      return files[0]
+    }
+
+    const recipesPromisse = recipes.map(async recipe => {
+
+      recipe.img = await getImage(recipe.id)
+
+      return recipe
+    })
+
+    recipes = await Promise.all(recipesPromisse)
+
+    return res.render('admin/recipes/recipes', { recipes })
 
   },
   async create(req, res) {
