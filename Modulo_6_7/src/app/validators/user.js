@@ -8,7 +8,10 @@ module.exports = {
 
     for (key of keys) {
       if (req.body[key] == "") {
-        return res.send('Preencha todos os campos.')
+        return res.render('users/register', {
+          user: req.body,
+          error: 'Preencha todos os campos'
+        })
       }
     }
 
@@ -22,10 +25,16 @@ module.exports = {
       or: {cpf_cnpj}
     })
 
-    if (user) return res.send('Usuário já cadastrado.')
+    if (user) return res.render('users/register', {
+      user: req.body,
+      error: 'Usuário já cadastrado'
+    })
 
     // check if password match
-    if (password != passwordRepeat) return res.send('Password mismatch.')
+    if (password != passwordRepeat) return res.render('users/register', {
+      user: req.body,
+      error: 'Senhas diferentes'
+    })
 
     next()
   }
