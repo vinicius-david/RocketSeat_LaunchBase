@@ -6,8 +6,6 @@ const { formatPrice, date } = require('../../lib/utils')
 module.exports = {
   async create(req, res) {
 
-    console.log('ok')
-
     let results = await Category.all()
     const categories = results.rows
 

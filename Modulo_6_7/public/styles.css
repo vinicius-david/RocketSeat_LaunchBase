@@ -207,6 +207,7 @@ form .item > div:nth-child(1) {
   margin-bottom: 8px;
 }
 
+form .item .input input,
 form .item input[type='text'],
 form .item input[type='number'],
 form .item textarea,
@@ -583,4 +584,32 @@ form .item #photos-preview .photo:hover i {
 .search-products nav ul li a:hover {
   color: black;
   font-weight: 700;
+}
+
+/* USER REGISTER -------------------------------------------------------------*/
+
+.user-register.container.form {
+  max-width: 500px;
+}
+
+.form input[name='email'],
+.form input[name='password'],
+.form input[name='passwordRepeat'] {
+  max-width: 50%;
+}
+
+.form input[name='cep'] {
+  max-width: 25%;
+}
+
+.form input[name='cpf_cnpj'] {
+  max-width: 40%;
+}
+
+/* EMAIL INVALIDO ------------------------------------------------------------*/
+
+.input .error {
+  color: #eb2b15;
+  padding: 4px;
+  font-size: 12px;
 }
