@@ -48,26 +48,36 @@ ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" (
 
 ALTER TABLE "files" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 
--- -- CREATE PROCEDURE
+-- CREATE PROCEDURE
 
--- CREATE FUNCTION trigger_set_timestamp()
--- RETURNS TRIGGER AS $$
--- BEGIN
---   NEW.updated_at = NOW();
---   RETURN NEW;
--- END;
--- $$ LANGUAGE plpgsql;
+CREATE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
--- -- AUTO UPDATE OF PRODUCTS
+-- AUTO UPDATE OF PRODUCTS
 
--- CREATE TRIGGER set_timestamp
--- BEFORE UPDATE ON products
--- FOR EACH ROW
--- EXECUTE PROCEDURE trigger_set_timestamp()
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON products
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp()
 
--- -- AUTO UPDATE OF USERS
+-- AUTO UPDATE OF USERS
 
--- CREATE TRIGGER set_timestamp
--- BEFORE UPDATE ON users
--- FOR EACH ROW
--- EXECUTE PROCEDURE trigger_set_timestamp()
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp()
+
+-- CONNECT PG-SIMPLE TABLE
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+  "sess" json NOT NULL,
+  "expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
