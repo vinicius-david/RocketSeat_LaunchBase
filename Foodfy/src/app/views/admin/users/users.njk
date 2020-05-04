@@ -19,100 +19,31 @@
 
   <div class='users-container'>
 
-    <div class='user'>
+    {% for user in users %}
 
-      <div class='name'>
-        <h3>Nome Completo</h3>
-      </div>
-
-      <div class='email'>
-        <h3>fulano@hotmail.com</h3>
-      </div>
-
-      <div class='links'>
-        <a class='edit' href='/admin/users/edit'>Editar</a>
-        <a class='remove' href='/admin/users/id/edit'>Remover</a>
-      </div>
-
-    </div>
-
-    <div class='user'>
-
-        <div class='name'>
-          <h3>Nome Completo</h3>
-        </div>
-
-        <div class='email'>
-          <h3>fulano@hotmail.com</h3>
-        </div>
-
-        <div class='links'>
-          <a href='/admin/users/id/edit'>Editar</a>
-          <a href='/admin/users/id/edit'>Remover</a>
-        </div>
-
-      </div>
       <div class='user'>
 
         <div class='name'>
-          <h3>Nome Completo</h3>
+          <h3>{{user.name}}</h3>
         </div>
 
         <div class='email'>
-          <h3>fulano@hotmail.com</h3>
+          <h3>{{user.email}}</h3>
         </div>
 
         <div class='links'>
-          <a href='/admin/users/id/edit'>Editar</a>
-          <a href='/admin/users/id/edit'>Remover</a>
-        </div>
+          <a class='edit' href='/admin/users/{{user.id}}/edit'>Editar</a>
 
-      </div><div class='user'>
+          <form method='POST' action='/admin/users/{{user.id}}/edit?_method=DELETE'>
+            <button type='submit'>Remover</button>
+            <input type='hidden' name='id' value={{user.id}}>
+          </form>
 
-        <div class='name'>
-          <h3>Nome Completo</h3>
-        </div>
-
-        <div class='email'>
-          <h3>fulano@hotmail.com</h3>
-        </div>
-
-        <div class='links'>
-          <a href='/admin/users/id/edit'>Editar</a>
-          <a href='/admin/users/id/edit'>Remover</a>
-        </div>
-
-      </div><div class='user'>
-
-        <div class='name'>
-          <h3>Nome Completo</h3>
-        </div>
-
-        <div class='email'>
-          <h3>fulano@hotmail.com</h3>
-        </div>
-
-        <div class='links'>
-          <a href='/admin/users/id/edit'>Editar</a>
-          <a href='/admin/users/id/edit'>Remover</a>
-        </div>
-
-      </div><div class='user'>
-
-        <div class='name'>
-          <h3>Nome Completo</h3>
-        </div>
-
-        <div class='email'>
-          <h3>fulano@hotmail.com</h3>
-        </div>
-
-        <div class='links'>
-          <a href='/admin/users/id/edit'>Editar</a>
-          <a href='/admin/users/id/edit'>Remover</a>
         </div>
 
       </div>
+
+    {% endfor %}
 
   </div>
   

@@ -3,8 +3,12 @@ const crypto = require('crypto')
 const User = require('../models/User')
 
 module.exports = {
-  list(req, res) {
-    return res.render('admin/users/users')
+  async list(req, res) {
+
+    let results = await User.list()
+    const users = results.rows
+
+    return res.render('admin/users/users', { users })
   },
   create(req, res) {
     return res.render('admin/users/create')

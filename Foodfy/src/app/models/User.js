@@ -3,6 +3,17 @@ const db = require('../../config/db')
 const { hash } = require('bcryptjs')
 
 module.exports = {
+  list() {
+    try {
+
+      const query = `SELECT * FROM users`
+
+      return db.query(query)
+      
+    } catch (err) {
+      console.error(err)
+    }
+  },
   async create(data) {
     try {
 
