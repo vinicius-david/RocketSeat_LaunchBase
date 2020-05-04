@@ -32,7 +32,7 @@ module.exports = {
     const values = [
       data.name,
       data.email,
-      passwordHash,
+      data.password,
       data.is_admin
     ]
 
@@ -44,43 +44,64 @@ module.exports = {
       console.error(err)
     }
   },
-  find(id) {
+  async find(filters) {
     try {
 
-      const query = `SELECT users.*, count(recipes) AS total_recipes 
-      FROM users
-      LEFT JOIN recipes ON (recipes.user_id = users.id)
-      WHERE users.id = $1 GROUP by users.id`
+      // const query = `SELECT users.*, count(recipes) AS total_recipes 
+      // FROM users
+      // LEFT JOIN recipes ON (recipes.user_id = users.id)
+      // WHERE users.id = $1 GROUP by users.id`
 
-      const values = [
-        id
-      ]
+      // const values = [
+      //   id
+      // ]
 
-      return db.query(query, values)
+      // return db.query(query, values)
+
+      let query = `SELECT users.*, count(recipes) AS total_recipes
+        FROM users
+        LEFT JOIN recipes ON (recipes.user_id = users.id)
+      `
+
+      Object.keys(filters).map(key => {
+        // WHERE, OR, AND
+        query = `${query}
+          ${key}
+        `
+        Object.keys(filters[key]).map(field => {
+          query = `${query} users.${field} = '${filters[key][field]}' GROUP BY users.id`
+        })
+      })
+  
+      const results = await db.query(query)
+      
+      return results.rows[0]
 
     } catch (err) {
       console.error(err)
     }
   },
-  update(data) {
+  async update(id, fields) {
     try {
       
-    const query = `
-    UPDATE users SET 
-      name=($1), 
-      email=($2),
-      is_admin=($3)
-      WHERE id = $4 
-    `
+      let query = `UPDATE users SET`
 
-    const values = [
-      data.name,
-      data.email,
-      data.is_admin,
-      data.id
-    ]
-
-    return db.query(query, values)
+      Object.keys(fields).map((key, index, array) => {
+        if((index + 1) < array.length) {
+          query = `${query}
+            ${key} = '${fields[key]}',
+          `
+        } else {
+          // last iteration
+          query = `${query}
+            ${key} = '${fields[key]}'
+            WHERE id = ${id}
+          `
+        }
+      })
+  
+      await db.query(query)
+      return
 
     } catch (err) {
       console.error(err)

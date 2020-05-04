@@ -39,11 +39,15 @@ routes.delete('/admin/chefs/:id/edit', multer.array('photo', 1), chefs.delete)
 
 // SESSION
 
-routes.get('/users/login', session.login)
+routes.get('/users/login', session.loginForm)
+routes.post('/users/login', session.login)
+routes.post('/users/logout', session.logout)
 
 routes.get('/users/forgot-password', session.forgotForm)
+routes.post('/users/forgot-password', session.forgot)
 
 routes.get('/users/reset-password', session.resetForm)
+routes.post('/users/reset-password', session.reset)
 
 // USERS
 
