@@ -2,19 +2,31 @@
 
 {% block content %}
 
-<form method='POST'>
-
 <div class='user-header-container'>
 
   <div class='user-header-title'>
     <h2>Atualizar usuário</h2>
   </div>
 
-  <div class='buttons'>
-    <button type='submit'>Deletar</button>
-    <button type='submit'>Salvar</button>
+  <div>
+
+    <form method='POST' action='/admin/users/:id/edit?_method=DELETE'>
+
+      <div class='buttons'>
+        <button type='submit'>Deletar</button>
+        <input type='hidden' name='id' value={{user.id}}>
+      </div>
+
+    </form>
+
   </div>
 
+  <form method='POST' action='/admin/users/:id/edit?_method=PUT'>
+
+  <div class='buttons'>
+    <button type='submit'>Salvar</button>
+    <input type='hidden' name='id' value={{user.id}}>
+  </div>
 
 </div>
 
@@ -25,7 +37,7 @@
     <h3>Nome</h3>
 
     <div class='input'>
-      <input name='password' type='text' placeholder='Digite o nome completo'>
+      <input name='name' type='text' value='{{user.name}}'>
     </div>
 
   </div>
@@ -35,13 +47,16 @@
     <h3>Email</h3>
 
     <div class='input'>
-      <input name='email' type='text' placeholder='Digite o email'>
+      <input name='email' type='text' value='{{user.email}}'>
     </div>
 
   </div>
 
   <div class='admin-fields'>
-    <input name='is-admin' type='checkbox'>
+    <input 
+      name='is_admin' 
+      type='checkbox' 
+      {% if user.is_admin == true %}checked{% endif %}>
     <h3>Administrador</h3>
   </div>
 

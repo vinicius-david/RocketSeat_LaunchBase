@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form method='POST'>
+<form method='POST' action='/admin/users/create'>
 
 <div class='user-header-container'>
 
@@ -25,7 +25,7 @@
     <h3>Nome</h3>
 
     <div class='input'>
-      <input name='password' type='text' placeholder='Digite o nome completo'>
+      <input name='name' type='text' placeholder='Digite o nome completo'>
     </div>
 
   </div>
@@ -41,7 +41,7 @@
   </div>
 
   <div class='admin-fields'>
-    <input name='is-admin' type='checkbox'>
+    <input name='is_admin' type='checkbox'>
     <h3>Administrador</h3>
   </div>
 

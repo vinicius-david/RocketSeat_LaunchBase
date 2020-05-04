@@ -49,7 +49,13 @@ routes.get('/users/reset-password', session.resetForm)
 
 routes.get('/admin/users', users.list)
 routes.get('/admin/users/create', users.create)
-routes.get('/admin/users/show', users.show)
-routes.get('/admin/users/edit', users.edit)
+routes.get('/admin/users/:id', users.show)
+routes.get('/admin/users/:id/edit', users.edit)
+
+routes.post('/admin/users/create', users.post)
+
+routes.put('/admin/users/:id/edit', users.put)
+
+routes.delete('/admin/users/:id/edit', users.delete)
 
 module.exports = routes

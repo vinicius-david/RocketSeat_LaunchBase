@@ -2,16 +2,16 @@
 
 {% block content %}
 
-<form method='POST'>
+<form method='POST' action='/admin/users/:id?_method=PUT'>
 
 <div class='user-header-container'>
 
   <div class='user-header-title'>
-    <h2>Bem vindo usuário</h2>
+    <h2>Bem vindo {{user.name}}</h2>
   </div>
 
   <div class='buttons'>
-    <button type='submit'>Salvar</button>
+    <a href='/admin/users/{{user.id}}/edit'>Editar</a>
   </div>
 
 
@@ -24,7 +24,7 @@
     <h3>Nome</h3>
 
     <div class='input'>
-      <input name='password' type='text'>
+      <input name='name' type='text' value='{{user.name}}'>
     </div>
 
   </div>
@@ -34,7 +34,7 @@
     <h3>Email</h3>
 
     <div class='input'>
-      <input name='email' type='text'>
+      <input name='email' type='text' value='{{user.email}}'>
     </div>
 
   </div>
@@ -44,7 +44,7 @@
     <h3>Senha</h3>
 
     <div class='input'>
-      <input name='email' type='text' placeholder='Digite a senha'>
+      <input name='password' type='text' placeholder='Digite a senha'>
     </div>
 
   </div>
