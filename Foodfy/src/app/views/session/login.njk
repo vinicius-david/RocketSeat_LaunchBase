@@ -1,0 +1,43 @@
+{% extends 'session/layout.njk' %}
+
+{% block content %}
+
+<form method='POST' action='/users/login'>
+
+  <div class='title'>
+    <h2>Iniciar sessão</h2>
+  </div>
+
+  <div class='fields'>
+
+    <h3>Email</h3>
+
+    <div class='input'>
+      <input name='email' type='text' placeholder='Digite seu email'>
+    </div>
+
+  </div>
+
+  <div class='fields'>
+
+    <h3>Senha</h3>
+
+    <div class='input'>
+      <input name='password' type='text' placeholder='Digite sua senha'>
+    </div>
+
+  </div>
+
+  <div class='submit'>
+    <div>
+      <a href='/users/forgot-password'>Perdeu a senha?</a>
+    </div>
+
+    <div>
+      <button type='submit'>Acessar</button>
+    </div>
+  <div>
+
+</form>
+
+{% endblock content %}

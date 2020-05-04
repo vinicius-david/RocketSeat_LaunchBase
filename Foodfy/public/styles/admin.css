@@ -518,3 +518,126 @@ header .admin-header-links a img {
 
   cursor: pointer;
 }
+
+/* USERS ---------------------------------------------------------------------*/
+
+.user-header-container {
+  width: 940px;
+  margin: 0 auto;
+  padding: 55px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.user-title h2 {
+  font-size: 24px;
+}
+
+.user-header-container .buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-header-container .buttons button {
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  background-color: #6558c3;
+  padding: 6px 24px;
+  border-radius: 4px;
+  margin-left: 15px;
+
+  width: 140px;
+}
+
+.user-header-container .buttons a {
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  background-color: #8a8a8a;
+  padding: 6px 40px;
+  border-radius: 4px;
+  margin-left: 15px;
+}
+
+.user-fields-container {
+  width: 940px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.user-fields h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.user-fields .input input {
+  width: 100%;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+
+  display: block;
+  box-sizing: border-box;
+}
+
+.admin-fields {
+  display: flex;
+  align-items: center;
+}
+
+.admin-fields h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+/* USERS LIST ----------------------------------------------------------------*/
+
+.user-header-container .buttons .new-button {
+  background-color: #6558C3;
+}
+
+.users-container {
+  width: 940px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 100px;
+}
+
+.users-container .user .name h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #111111;
+}
+
+.users-container .user .email h3 {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.users-container .user .links a {
+  text-decoration: none;
+  margin-right: 26px;
+  font-size: 14px;
+}
+
+.users-container .user .links a.edit {
+  color: #6558C3;
+}
+
+.users-container .user .links a.remove {
+  color: #F55A5A;
+}

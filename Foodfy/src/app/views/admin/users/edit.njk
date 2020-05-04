@@ -1,0 +1,52 @@
+{% extends 'admin/layout.njk' %}
+
+{% block content %}
+
+<form method='POST'>
+
+<div class='user-header-container'>
+
+  <div class='user-header-title'>
+    <h2>Atualizar usuário</h2>
+  </div>
+
+  <div class='buttons'>
+    <button type='submit'>Deletar</button>
+    <button type='submit'>Salvar</button>
+  </div>
+
+
+</div>
+
+<div class='user-fields-container'>
+
+  <div class='user-fields'>
+
+    <h3>Nome</h3>
+
+    <div class='input'>
+      <input name='password' type='text' placeholder='Digite o nome completo'>
+    </div>
+
+  </div>
+
+  <div class='user-fields'>
+
+    <h3>Email</h3>
+
+    <div class='input'>
+      <input name='email' type='text' placeholder='Digite o email'>
+    </div>
+
+  </div>
+
+  <div class='admin-fields'>
+    <input name='is-admin' type='checkbox'>
+    <h3>Administrador</h3>
+  </div>
+
+</div>
+
+</form>
+
+{% endblock content %}
