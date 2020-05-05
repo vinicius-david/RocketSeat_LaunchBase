@@ -20,6 +20,8 @@ header .admin-header-links {
   
   display: flex;
   align-items: center;
+
+  position: relative;
 }
 
 header .admin-header-links a {
@@ -33,6 +35,18 @@ header .admin-header-links a {
 
 header .admin-header-links a img {
   margin-right: 50px;
+}
+
+header .admin-header-links form button {
+  text-transform: uppercase;
+  color: white;
+  background-color: black;
+  padding: 0px;
+  font-size: 15px;
+
+  position: absolute;
+  right: 0px;
+  top: 34px;
 }
 
 /* RECIPES -------------------------------------------------------------------*/
@@ -526,18 +540,19 @@ header .admin-header-links a img {
   margin: 0 auto;
   padding: 55px;
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
 .user-title h2 {
   font-size: 24px;
+  margin-right: 440px;
 }
 
 .user-header-container .buttons {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  position: absolute;
+  right: 55px;
 }
 
 .user-header-container .buttons button {
@@ -550,6 +565,13 @@ header .admin-header-links a img {
   margin-left: 15px;
 
   width: 140px;
+
+}
+
+.user-header-container #delete {
+  background-color: #DC4747;
+  position: absolute;
+  right: 150px;
 }
 
 .user-header-container .buttons a {
@@ -628,6 +650,11 @@ header .admin-header-links a img {
   margin-bottom: 16px;
 }
 
+.users-container .user .links {
+  display: flex;
+  flex-direction: row;
+}
+
 .users-container .user .links a {
   text-decoration: none;
   margin-right: 26px;
@@ -638,6 +665,7 @@ header .admin-header-links a img {
   color: #6558C3;
 }
 
-.users-container .user .links a.remove {
+.users-container .user .links form button {
+  background-color: white;
   color: #F55A5A;
 }

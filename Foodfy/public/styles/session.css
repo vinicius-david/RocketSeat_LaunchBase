@@ -86,20 +86,25 @@ form .submit {
 .messages {
   display: flex;
   justify-content: center;
-  padding: 16px;
+  align-items: center;
   position: absolute;
-  width: 100%;
+  padding: 15px;
+
+  width: 330px;
+  height: 105px;
   color: white;
-  top: 0;
+
+  top: 12px;
+  right: 18px;
   opacity: 1;
 
   animation: hidemessage 400ms 5s ease-out forwards;
 }
 
 .messages.error {
-  background-color: #e74c3c;
+  background-color: #DC4747;
 }
 
 .messages.success {
-  background-color: #50f81d;
+  background-color: #01B12A;
 }
