@@ -9,6 +9,20 @@ module.exports = {
     ORDER BY created_at DESC`)
 
   },
+  userAll(id) {
+    
+    const query = `SELECT recipes.*, chefs.name AS chef_name
+    FROM recipes 
+    LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+    WHERE user_id = $1
+    ORDER BY created_at DESC`
+
+    const values = [
+      id
+    ]
+
+    return db.query(query, values)
+  },
   create(data) {
 
     const query = `
@@ -17,8 +31,9 @@ module.exports = {
         title,
         ingredients,
         preparation,
-        information
-      ) VALUES ($1, $2, $3, $4, $5)
+        information,
+        user_id
+      ) VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
     `
 
@@ -28,6 +43,7 @@ module.exports = {
       data.ingredients,
       data.preparation,
       data.information,
+      data.user_id
     ]
 
     return db.query(query, values)

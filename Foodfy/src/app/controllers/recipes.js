@@ -1,14 +1,37 @@
 const Recipe = require('../models/Recipe')
 const Chef = require('../models/Chef')
 const File = require('../models/File')
+const User = require('../models/User')
 
 module.exports = {
   async list(req, res) {
 
     // get recipes
+    async function getRecipes() {
 
-    let results = await Recipe.all()
-    let recipes = results.rows
+      //check if is admin
+      const id = req.session.userId
+      const user = await User.find({ where: {id} })
+
+      if (user.is_admin) {
+
+      // get all recipes
+      let results = await Recipe.all()
+      let recipes = results.rows
+      return recipes
+
+    } else {
+
+      // get users recipes
+      let results = await Recipe.userAll(id)
+      let recipes = results.rows
+      return recipes
+    }
+    }
+    
+    let recipes = await getRecipes()
+
+    console.log(recipes)
 
     // get images
 
@@ -44,6 +67,8 @@ module.exports = {
     if (req.files.length == 0) {
       return res.send('Envie ao menos uma imagem.')
     }
+
+    req.body.user_id = req.session.userId
 
     let results = await Recipe.create(req.body)
     const recipeId = results.rows[0].id

@@ -33,6 +33,7 @@ module.exports = {
     const passed = await compare(password, user.password)
 
     if (!passed) return res.render('admin/users/show', {
+      user,
       error: 'Senha incorreta'
     })
 

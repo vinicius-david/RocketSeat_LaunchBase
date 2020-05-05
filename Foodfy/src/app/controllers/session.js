@@ -1,6 +1,5 @@
 const crypto = require('crypto')
 const mailer = require('../../lib/mailer')
-const { compare } = require('bcryptjs')
 const { hash } = require('bcryptjs')
 
 const User = require('../models/User')
@@ -74,13 +73,8 @@ module.exports = {
   },
   async reset(req, res) {
 
-    const { token, password } = req.body
+    const { password } = req.body
     const user = req.user
-
-    //check token as password
-    // const passed = await compare(token, user.password)
-
-    // if (!passed) return res.send('token inválido')
 
     //hash password
     const newPassword = await hash(password, 8)
@@ -96,7 +90,5 @@ module.exports = {
       user: req.body,
       success: 'Senha atualizada'
     })
-
-    return res.redirect('/users/login')
   }
 }

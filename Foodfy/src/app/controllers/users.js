@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 const mailer = require('../../lib/mailer')
+const { hash } = require('bcryptjs')
 
 const User = require('../models/User')
 
@@ -42,10 +43,11 @@ module.exports = {
       sub: 'Solicitação de registro de usuário',
       html: `
         <h2>Bem vindo ao Foodfy</h2>
+        <p>Sua senha atual é ${token}</p>
         <p>Clique no link abaixo para definit uma nova senha!</p>
         <p>
           <a href='http://localhost:3000/users/reset-password?token=${token}' target='_blank'>
-          RECUPERAR SENHA
+          DEFINIR NOVA SENHA
           </a>
         </p>
       `
@@ -53,7 +55,9 @@ module.exports = {
 
     req.session.userId = userId
     
-    return res.redirect(`/admin/users/${userId}`)
+    return res.render(`admin/users/users`, {
+      success: 'Novo usuário criado, use o link enviado por email para redefinir a sua senha'
+    })
   },
   async show(req, res) {
 
@@ -84,24 +88,45 @@ module.exports = {
       req.body.is_admin = false
     }
 
+    if (req.body.password) return req.body.password = await hash(req.body.password, 8)    
+
     await User.update(userId, req.body)
 
-    return res.redirect(`/admin/users/${userId}`)
+    let results = await User.list()
+    const users = results.rows
+
+    return res.render(`admin/users/users`, {
+      users,
+      success: 'Os dados do usuário foram atualizados'
+    })
   },
   async delete(req, res) {
 
-    const id = req.params.id
+    const id = req.body.id
 
     let results = await User.find({ where: {id} })
     const user = results
 
     if (user.total_recipes != 0) {
-      return res.send('Usuários com receitas cadastradas não podem ser deletados.')
+
+      let results = await User.list()
+      const users = results.rows
+
+      return res.render('admin/users/users', {
+        users,
+        error: 'Usuários com receitas cadastradas não podem ser deletados'
+      })
     } else {
       
       await User.delete(req.body.id)
 
-      return res.redirect('/admin/users')
+      let results = await User.list()
+      const users = results.rows
+
+      return res.render('admin/users/users', {
+        users,
+        success: 'Usuário deletado'
+      })
     }
   }
 }
