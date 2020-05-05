@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const mailer = require('../../lib/mailer')
 
 const User = require('../models/User')
 
@@ -15,9 +16,15 @@ module.exports = {
   },
   async post(req, res) {
 
-    //create users password
-    const password = crypto.randomBytes(10).toString('hex')
-    req.body.password = password
+    //create a random users password as token
+    const token = crypto.randomBytes(20).toString('hex')
+    req.body.password = token
+    req.body.reset_token = token
+
+    // create token expiration date
+    let now = new Date()
+    now = now.setHours(now.getHours() + 1)
+    req.body.reset_token_expires = now
 
     //boolean admin status
     if (req.body.is_admin) {
@@ -28,6 +35,22 @@ module.exports = {
 
     const userId = await User.create(req.body)
 
+    //send email with token
+    await mailer.sendMail({
+      to: req.body.email,
+      from: 'no-reply@launchstore.com.br',
+      sub: 'Solicitação de registro de usuário',
+      html: `
+        <h2>Bem vindo ao Foodfy</h2>
+        <p>Clique no link abaixo para definit uma nova senha!</p>
+        <p>
+          <a href='http://localhost:3000/users/reset-password?token=${token}' target='_blank'>
+          RECUPERAR SENHA
+          </a>
+        </p>
+      `
+    })
+
     req.session.userId = userId
     
     return res.redirect(`/admin/users/${userId}`)
@@ -35,9 +58,8 @@ module.exports = {
   async show(req, res) {
 
     const id = req.params.id
-    console.log(id)
+
     let results = await User.find({ where: {id} })
-    console.log(results)
     const user = results
 
     return res.render('admin/users/show', { user })
@@ -62,7 +84,7 @@ module.exports = {
       req.body.is_admin = false
     }
 
-    await User.update(req.body)
+    await User.update(userId, req.body)
 
     return res.redirect(`/admin/users/${userId}`)
   },

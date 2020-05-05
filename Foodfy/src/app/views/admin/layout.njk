@@ -11,6 +11,18 @@
 
 <body>
 
+  {% if error %}
+    <div class='error messages'>
+      {{error}}
+    </div>
+  {% endif %}
+
+  {% if success %}
+    <div class='success messages'>
+      {{success}}
+    </div>
+  {% endif %}
+
   <header class='admin'>
 
     <div class='admin-header-links'>

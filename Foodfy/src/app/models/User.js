@@ -22,8 +22,10 @@ module.exports = {
         name,
         email,
         password,
+        reset_token,
+        reset_token_expires,
         is_admin
-      ) VALUES ($1, $2, $3, $4)
+      ) VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
     `
 
@@ -32,7 +34,9 @@ module.exports = {
     const values = [
       data.name,
       data.email,
-      data.password,
+      passwordHash,
+      data.reset_token,
+      data.reset_token_expires,
       data.is_admin
     ]
 

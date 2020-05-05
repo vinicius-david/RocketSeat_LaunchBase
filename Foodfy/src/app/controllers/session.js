@@ -1,20 +1,28 @@
 const crypto = require('crypto')
 const mailer = require('../../lib/mailer')
+const { compare } = require('bcryptjs')
+const { hash } = require('bcryptjs')
 
 const User = require('../models/User')
 
 module.exports = {
   loginForm(req, res) {
+
+    if (req.session.userId) return res.redirect('/admin/users')
+
     return res.render('session/login')
   },
-  login(req, res) {
-    return res.redirect('/admin/users')
+  async login(req, res) {
+
+    req.session.userId = req.user.id
+
+    return res.redirect(`/admin/users/${req.session.userId}`)
   },
   logout(req, res) {
 
     req.session.destroy()
 
-    return res.redirect('/')
+    return res.redirect('/users/login')
   },
   forgotForm(req, res) {
     return res.render('session/forgot-password')
@@ -22,11 +30,8 @@ module.exports = {
   async forgot(req, res) {
     try {
 
-      const email = req.body.email
+      const user = req.user
 
-      let results = await User.find({ where: {email} })
-      const user = results
-      
       // create user token
       const token = crypto.randomBytes(20).toString('hex')
 
@@ -55,30 +60,41 @@ module.exports = {
         `
       })
 
-      // //warning
-      // return res.render('session/forgot-password', {
-      //   success: "Email enviado! Verifique sua caixa de entrada para redefinir a sua senha"
-      // })
-
-      return res.render('session/forgot-password')
+      //warning
+      return res.render('session/forgot-password', {
+        success: "Email enviado! Verifique sua caixa de entrada para redefinir a sua senha"
+      })
 
     } catch (err) {
       console.log(err)
     }
   },
   resetForm(req, res) {
-    return res.render('session/reset-password')
+    return res.render('session/reset-password', { token: req.query.token })
   },
   async reset(req, res) {
 
-    const { email, token, password, repeatPassword } = req.body
+    const { token, password } = req.body
+    const user = req.user
 
-    let user = await User.find({ where: {email} })
+    //check token as password
+    // const passed = await compare(token, user.password)
 
+    // if (!passed) return res.send('token inválido')
+
+    //hash password
+    const newPassword = await hash(password, 8)
+
+    //update user
     await User.update(user.id, {
-      password: password,
+      password: newPassword,
       reset_token: "",
       reset_token_expires: ""
+    })
+
+    return res.render('session/login', {
+      user: req.body,
+      success: 'Senha atualizada'
     })
 
     return res.redirect('/users/login')

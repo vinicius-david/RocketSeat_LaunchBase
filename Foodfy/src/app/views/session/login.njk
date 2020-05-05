@@ -13,7 +13,7 @@
     <h3>Email</h3>
 
     <div class='input'>
-      <input name='email' type='text' placeholder='Digite seu email'>
+      <input name='email' type='text' placeholder='Digite seu email' value='{{user.email}}' onblur="Validate.apply(this, 'isEmail')">
     </div>
 
   </div>
@@ -23,7 +23,7 @@
     <h3>Senha</h3>
 
     <div class='input'>
-      <input name='password' type='text' placeholder='Digite sua senha'>
+      <input name='password' type='password' placeholder='Digite sua senha'>
     </div>
 
   </div>

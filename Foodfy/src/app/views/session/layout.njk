@@ -10,6 +10,18 @@
 
 <body>
 
+  {% if error %}
+    <div class='error messages'>
+      {{error}}
+    </div>
+  {% endif %}
+
+  {% if success %}
+    <div class='success messages'>
+      {{success}}
+    </div>
+  {% endif %}
+
   <header>
 
     <div class='header-links'>
@@ -21,6 +33,8 @@
   </header>
 
   {% block content %}{% endblock content %}
+
+<script src='/scripts/admin.js'></script>
 
 </body>
 
