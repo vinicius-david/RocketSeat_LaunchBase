@@ -30,7 +30,7 @@ const Base = {
 
     return this
   },
-  find(id) {
+  async find(id) {
 
     const results = await find({ where: { id } }, this.table)
     
@@ -56,7 +56,7 @@ const Base = {
 
       Object.keys(fields).map(key => {
         keys.push(key)
-        values.push(fields[key])
+        values.push(`'${fields[key]}'`)
       })
 
       const query = `INSERT INTO ${this.table} (${keys.join(',')})
