@@ -1,0 +1,23 @@
+.card {
+  background-color: white;
+
+  padding: 32px 24px;
+  margin: 32px auto;
+  max-width: 90%;
+
+  box-shadow: 1px 1px 1px 1px black;
+  border-radius: 4px;
+}
+
+.card-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+
+  line-height: 24px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+
+  color: var(--primary-color);
+
+  margin-bottom: 16px;
+}

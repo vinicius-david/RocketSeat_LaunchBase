@@ -28,5 +28,7 @@ routes.get('/', sessionMiddleware.onlyUsers, UserValidator.show, UserController.
 routes.put('/', UserValidator.put, UserController.put)
 routes.delete('/', UserController.delete)
 
+routes.get('/ads', UserController.ads)
+
 
 module.exports = routes

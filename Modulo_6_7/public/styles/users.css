@@ -1,0 +1,100 @@
+/* USER REGISTER -------------------------------------------------------------*/
+
+.user-register.container.form {
+  max-width: 500px;
+}
+
+.user-register.form input[name='email'],
+.user-register.form input[name='password'],
+.user-register.form input[name='passwordRepeat'] {
+  max-width: 50%;
+}
+
+.user-register.form input[name='cep'] {
+  max-width: 25%;
+}
+
+.user-register.form input[name='cpf_cnpj'] {
+  max-width: 40%;
+}
+
+.users-ads {
+  max-width: 700px;
+}
+
+.users-ads .items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+
+  padding: 16px 0;
+}
+
+.users-ads .item {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+
+  align-items: start;
+
+  color: #444444;
+}
+
+.users-ads .item .image {
+  width: 100px;
+  height: 100px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-radius: 8px;
+  border: 1px solid #eeeeee;
+
+  box-shadow: 1px 1px 1px 1px black;
+}
+
+.users-ads .info {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+}
+
+.users-ads .info .title {
+  font-size: 14px;
+  color: #555555;
+
+  margin-bottom: 4px;
+}
+
+.users-ads .info .price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #555555;
+
+  margin-bottom: 4px;
+}
+
+.users-ads .info .published {
+  font-size: 12px;
+  font-weight: 300;
+  color: #555555;
+}
+
+.users-ads .actions {
+  display: flex;
+  margin-top: auto;
+}
+
+.users-ads .actions a {
+  margin-right: 16px;
+
+  color: var(--primary-color);
+}
+
+.users-ads .actions a:hover {
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--buttonhover-color);
+
+  transition: 300ms;
+}

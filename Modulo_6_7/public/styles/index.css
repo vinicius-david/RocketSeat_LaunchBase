@@ -584,26 +584,6 @@ form .item #photos-preview .photo:hover i {
   font-weight: 700;
 }
 
-/* USER REGISTER -------------------------------------------------------------*/
-
-.user-register.container.form {
-  max-width: 500px;
-}
-
-.user-register.form input[name='email'],
-.user-register.form input[name='password'],
-.user-register.form input[name='passwordRepeat'] {
-  max-width: 50%;
-}
-
-.user-register.form input[name='cep'] {
-  max-width: 25%;
-}
-
-.user-register.form input[name='cpf_cnpj'] {
-  max-width: 40%;
-}
-
 /* EMAIL INVALIDO ------------------------------------------------------------*/
 
 .input .error {
