@@ -1,0 +1,25 @@
+.orders-success,
+.orders-error {
+  padding: 0;
+  padding-bottom: 30px;
+
+  text-align: center;
+
+  margin: auto;
+
+  max-width: 40%;
+}
+
+.orders-success .success-lottie {
+  height: 150px;
+  padding-bottom: 20px;
+}
+
+.orders-error .error-lottie {
+  height: 150px;
+}
+
+.orders-success a,
+.orders-error a {
+  color: var(--buttonhover-color);
+}

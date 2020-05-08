@@ -3,6 +3,7 @@ const routes = express.Router();
 
 const SessionController = require('../app/controllers/SessionController')
 const UserController = require('../app/controllers/UserController')
+const OrderController = require('../app/controllers/OrderController')
 
 const UserValidator = require('../app/validators/user')
 const SessionValidator = require('../app/validators/session')
@@ -29,6 +30,10 @@ routes.put('/', UserValidator.put, UserController.put)
 routes.delete('/', UserController.delete)
 
 routes.get('/ads', UserController.ads)
+
+routes.post('/orders', sessionMiddleware.onlyUsers, OrderController.post)
+routes.get('/orders', (req, res) => res.render('orders/success'))
+routes.get('/orders/error', (req, res) => res.render('orders/error'))
 
 
 module.exports = routes
