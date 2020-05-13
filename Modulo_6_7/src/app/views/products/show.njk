@@ -87,9 +87,8 @@
               <p class='unavailable'>Em falta</p>
 
             {% else %}
-              <form method='POST' action='/users/orders'>
-                <button type='submit' class='button'>Comprar</button>
-                <input type='hidden' name='id' value='{{product.id}}'>
+              <form method='POST' action='/cart/{{product.id}}/add-one'>
+                <button type='submit' class='button'>Adicionar ao carrinho</button>
               </form>
             {% endif %}
 

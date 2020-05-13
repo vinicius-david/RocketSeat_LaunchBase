@@ -5,6 +5,7 @@ const HomeController = require('../app/controllers/HomeController')
 
 const products = require('./products')
 const users = require('./users')
+const cart = require('./cart')
 
 
 // HOME
@@ -26,6 +27,9 @@ routes.get('/accounts', function(req, res) {
 
 // USERS
 routes.use('/users', users)
+
+// CART
+routes.use('/cart', cart)
 
 
 module.exports = routes
