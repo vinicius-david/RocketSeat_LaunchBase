@@ -6,6 +6,7 @@ const HomeController = require('../app/controllers/HomeController')
 const products = require('./products')
 const users = require('./users')
 const cart = require('./cart')
+const orders = require('./orders')
 
 
 // HOME
@@ -30,6 +31,9 @@ routes.use('/users', users)
 
 // CART
 routes.use('/cart', cart)
+
+// ORDERS
+routes.use('/orders', orders)
 
 
 module.exports = routes
